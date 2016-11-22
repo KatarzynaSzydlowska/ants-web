@@ -1,0 +1,8 @@
+{
+  "name": "Web Ants",
+  "description": "PitE project",
+  "image": "heroku/python",
+  "repository": "https://github.com/pite-ants/ants-web",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ]
+}
