@@ -1,4 +1,7 @@
 language: python
 
+env:
+  - DJANGO="1.10"
+
 script:
    - python manage.py test
