@@ -1,9 +1,14 @@
 language: python
+env:
+  - DJANGO_VERSION=1.10.3
+install:
+  - python setup.py -q install
 python:
   - "2.6"
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  - pip install -q Django==$DJANGO_VERSION
   - pip install coveralls
 script:
   - python manage.py test
