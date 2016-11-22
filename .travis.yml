@@ -1,18 +1,18 @@
 language: python
 python:
-  - 2.7
-  - 3.3
-deploy:
-  provider: heroku
-  api_key:
-    secure: "236fc4046bd092d94e17d0ee607b6d95da4994c0"
-
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  # PyPy versions
+  - "pypy"
+  - "pypy"  # PyPy2 2.5.0
+  - "pypy3" # Pypy3 2.4.0
+  - "pypy-5.3.1"
+# command to install dependencies
 install:
+  - pip install .
   - pip install -r requirements.txt
-  - pip install coveralls
-
-script:
-  coverage run manage.py test
-
-after_success:
-  coveralls
+# command to run tests
+script: python manage.py test
