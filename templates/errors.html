@@ -1,0 +1,11 @@
+{% if errors %}
+    <section id="messages">
+        <div class="row">
+            <div class="alert alert-danger">
+                {% for error in errors %}
+                    {{ error }}<br/>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

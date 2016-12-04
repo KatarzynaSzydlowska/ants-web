@@ -1,0 +1,10 @@
+{% if request.session.user != None %}
+    <ul class="nav navbar-nav float-sm-right">
+        <li class="nav-item">
+            <span class="nav-link">Zalogowany jako {{ current_student }}</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+    </ul>
+{% endif %}
