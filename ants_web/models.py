@@ -39,3 +39,8 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name + ' ' + self.surname
+
+    @staticmethod
+    def get_hashed_password(password):
+        return make_password(password, None, hasher='unsalted_md5');
+

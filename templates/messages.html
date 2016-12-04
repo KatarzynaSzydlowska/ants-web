@@ -1,0 +1,20 @@
+<section id="messages">
+    {% if errors %}
+        <div class="row">
+            <div class="alert alert-danger">
+                {% for error in errors %}
+                    {{ error }}<br/>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% if successes %}
+        <div class="row">
+            <div class="alert alert-danger">
+                {% for success in successes %}
+                    {{ success }}<br/>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</section>
