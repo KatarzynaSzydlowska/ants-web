@@ -15,7 +15,7 @@ class Course(models.Model):
 class StudentManager(models.Manager):
     @classmethod
     def create(cls, index, name, surname, group, password):
-        hashed_password = make_password(password, None, hasher='unsalted_md5')
+        hashed_password = Student.get_hashed_password(password)
 
         student = Student(
             index=index,
@@ -42,5 +42,4 @@ class Student(models.Model):
 
     @staticmethod
     def get_hashed_password(password):
-        return make_password(password, None, hasher='unsalted_md5');
-
+        return make_password(password, None, hasher='unsalted_md5')

@@ -2,8 +2,9 @@
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader, RequestContext
-from models import Student
 from django.template.context_processors import csrf
+
+from models import Student
 
 
 def index_guest(request):
@@ -56,7 +57,6 @@ def logout(request):
 def change_password(request):
     context = RequestContext(request)
     context['current_student'] = Student.objects.get(id=request.session.get('user', 0))
-
     template = loader.get_template('change_password.html')
     return HttpResponse(template.render(context))
 

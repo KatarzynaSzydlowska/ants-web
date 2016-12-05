@@ -4,6 +4,9 @@
             <span class="nav-link">Zalogowany jako {{ current_student }}</span>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{% url 'change_password' %}">Zmiana hasła</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
     </ul>
