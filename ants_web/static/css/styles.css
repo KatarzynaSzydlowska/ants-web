@@ -1,6 +1,25 @@
-body {background-color: #e3e0cf;}
+body {
+    background-color: #e0e0e0;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #dedede;
+}
+
+.table-curved {
+    border-collapse: separate;
+}
+
+.table-curved {
+    border-radius: 10px;
+}
+
+
 #mainContainer {padding-top: 55px;}
 
+#content {
+    margin-top: 20px;
+}
 #loginBox {
     margin-top: 200px;
     background-color: #c5d5cb;

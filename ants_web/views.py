@@ -1,10 +1,44 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.template import loader, RequestContext
 from django.template.context_processors import csrf
 
-from models import Student
+from models import Student, Course
+
+
+def course_list(request):
+    context = RequestContext(request)
+    context['current_student'] = Student.objects.get(id=request.session.get('user'))
+    context['courses'] = enumerate(Course.objects.all())
+    return render(request, 'course/list.html', context)
+
+
+def course_details(request, course_id):
+    context = RequestContext(request)
+    context['current_student'] = Student.objects.get(id=request.session.get('user'))
+    context['course'] = Course.objects.get(id=course_id)
+    return render(request, 'course/details.html', context)
+
+
+def course_join(request, course_id):
+    context = RequestContext(request)
+    student = Student.objects.get(id=request.session.get('user'))
+    context['courses'] = enumerate(Course.objects.all())
+    context['current_student'] = student
+
+    if course_id is not 0:
+        course = Course.objects.get(id=course_id)
+        student.courses.add(course)
+
+        try:
+            student.save()
+            context['successes'] = [u'Przedmiot został dodany do Twojej listy.']
+        except Student.DoesNotExist:
+            context['errors'] = [u'Wystąpił błąd podczas zapisywania się na przedmiot.']
+
+    return render(request, 'course/list.html', context)
 
 
 def index_guest(request):

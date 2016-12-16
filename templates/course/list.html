@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Lista przedmiotów{% endblock %}
+
+{% block content %}
+    <h2 class="page-header">Lista przedmiotów</h2>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-inverse">
+        <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Prowadzący</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i, course in courses %}
+            <tr>
+                <td>{{ i|add:"1" }}</td>
+                <td>{{ course.name }}</td>
+                <td>
+                    {% for instructor in course.get_instructors %}
+                        {{ instructor.name }} <br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'course_details' course.id %}">Szczegóły</a>
+                </td>
+                <td>
+                    {% if current_student.has_joined_course %}
+                        <a href="{% url 'course_join' course.id %}">Zrezygnuj</a>
+                    {% else %}
+                        <a href="{% url 'course_join' course.id %}">Dołącz</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

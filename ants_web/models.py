@@ -1,15 +1,106 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.contrib.auth.hashers import make_password
 from django.db import models
 
 
-class Course(models.Model):
-    name = models.CharField(max_length=128)
+class CourseManager(models.Manager):
+    @classmethod
+    def create(cls, name):
+        return Course(name=name)
 
-    def __init__(self, name, *args, **kwargs):
-        super(Course, self).__init__(*args, **kwargs)
-        self.name = name
+    def get_or_create(self, name):
+        try:
+            return self.get(name=name)
+        except Course.DoesNotExist:
+            return self.create(name=name)
+
+
+class Course(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=128)
+    objects = CourseManager()
+
+    def get_instructors(self):
+        terms = Term.objects.all().filter(course=self)
+        return Instructor.objects.all().filter(term__in=terms).distinct()
+
+    def get_terms(self):
+        return Term.objects.all().filter(course=self)
+
+
+class InstructorManager(models.Manager):
+    @classmethod
+    def create(cls, name, email):
+        return Instructor(name=name, email=email)
+
+    def get_or_create(self, name, email):
+        try:
+            return self.get(name=name)
+        except Instructor.DoesNotExist:
+            return Instructor.objects.create(name=name, email=email)
+
+
+class Instructor(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=64)
+    email = models.EmailField()
+    objects = InstructorManager()
+
+
+class LocationManager(models.Manager):
+    @classmethod
+    def create(cls, name, capacity):
+        return Location(name=name, capacity=capacity)
+
+    def get_or_create(self, name, capacity):
+        try:
+            return self.get(name=name)
+        except Location.DoesNotExist:
+            return self.create(name=name, capacity=capacity)
+
+
+class Location(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=64)
+    capacity = models.IntegerField(default=15)
+    objects = LocationManager()
+
+
+class TermManager(models.Manager):
+    @classmethod
+    def create(cls, kind, starts_at, ends_at, course, day_of_week, location):
+        return Term(kind=kind, starts_at=starts_at, ends_at=ends_at, day_of_week=day_of_week,
+                    course=course, location=location)
+
+
+class Term(models.Model):
+    id = models.AutoField(primary_key=True)
+    kind = models.IntegerField()
+    day_of_week = models.IntegerField()
+    starts_at = models.TimeField()
+    ends_at = models.TimeField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    instructors = models.ManyToManyField(Instructor)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    objects = TermManager()
+
+    terms_types = {
+        'Wykład': 1, 'Ćwiczenia Projektowe': 2, 'Lab.': 3, 'Zajęcia Seminaryjne': 4, 'Course': 5, 'Konwersatorium': 6}
+    terms_names = {1: 'Wykład', 2: 'Ćwiczenia Projektowe', 3: 'Labolatorium', 4: 'Seminarium', 5: 'Kurs',
+                   6: 'Konwersatorium'}
+    days_of_week = {'M': 1, 'T': 2, 'W': 3, 'Th': 4, 'F': 5}
+    days_names = {1: 'Poniedziałek', 2: 'Wtorek', 3: 'Środa', 4: 'Czwartek', 5: 'Piątek'}
+
+    def get_instructors(self):
+        return Instructor.objects.all().filter(term=self)
+
+    def get_day_of_week_name(self):
+        return self.days_names[self.day_of_week]
+
+    def get_type_name(self):
+        return self.terms_names[self.kind]
 
 
 class StudentManager(models.Manager):
@@ -35,6 +126,7 @@ class Student(models.Model):
     surname = models.CharField(max_length=32)
     group_id = models.IntegerField()
     is_activated = models.IntegerField()
+    courses = models.ManyToManyField(Course)
     objects = StudentManager()
 
     def __str__(self):
@@ -43,3 +135,6 @@ class Student(models.Model):
     @staticmethod
     def get_hashed_password(password):
         return make_password(password, None, hasher='unsalted_md5')
+
+    def has_joined_course(self, course):
+        return len(self.courses.filter(course_id=course.id))

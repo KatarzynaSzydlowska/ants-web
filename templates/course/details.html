@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Lista przedmiotów{% endblock %}
+
+{% block content %}
+    <h2 class="page-header">{{ course.name }}</h2>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Rodzaj</th>
+            <th>Prowadzący</th>
+            <th>Dzień tygodnia</th>
+            <th>Godziny</th>
+            <th>Sala</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for term in course.get_terms %}
+            <tr>
+                <td>{{ term.get_type_name }}</td>
+                <td>
+                    {% for instructor in term.get_instructors %}
+                        {{ instructor.name }} <br/>
+                    {% endfor %}
+                </td>
+                <td>{{ term.get_day_of_week_name }}</td>
+                <td>{{ term.starts_at }} - {{ term.ends_at }}</td>
+                <td>{{ term.location.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
