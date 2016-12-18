@@ -1,11 +1,67 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+import re
+
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader, RequestContext
 from django.template.context_processors import csrf
 
-from models import Student, Course
+from models import Student, Course, TermSelection
+
+
+def terms_selection(request):
+    context = {}
+    student = Student.objects.get(id=request.session.get('user'))
+    courses = student.courses.all()
+
+    if request.method == 'POST':
+        points = {}
+        comments = {}
+
+        post_dictionary = request.POST.dict()
+
+        for key in post_dictionary:
+            result = re.search('selection\[([0-9]+)\]\[([a-z]+)\]', key)
+            if result:
+                if result.group(2) == 'points':
+                    value = request.POST.get(key, 0)
+                    points_value = int(value) if value else 0
+                    points[int(result.group(1))] = points_value
+                elif result.group(2) == 'comment':
+                    comments[int(result.group(1))] = request.POST.get(key)
+
+        for course in courses:
+            if not course.validate_points(points):
+                context['errors'] = [u'Możesz przydzielić maksymalnie 15 punktów na przedmiot ' + course.name]
+
+        if 'errors' not in context:
+            for term_id, point in points.items():
+                selection = TermSelection.objects.create_or_update(
+                    student_id=student.id,
+                    term_id=int(term_id),
+                    points=int(points[term_id]),
+                    comment=comments.get(term_id, ' ')
+                )
+                try:
+                    selection.save()
+                    context['successes'] = ['Twój wybór został zapisany.']
+                except selection.DoesNotExist:
+                    context['errors'] = ['Wystąpił błąd przy zapisie.']
+    else:
+        selections = TermSelection.objects.all().filter(student=student)
+        points = {}
+        comments = {}
+
+        for selection in selections:
+            points[selection.term.id] = selection.points
+            comments[selection.term_id] = selection.comment
+
+    context['current_student'] = student
+    context['courses'] = enumerate(courses)
+    context['points'] = points
+    context['comments'] = comments
+    context.update(csrf(request))
+    return render(request, 'course/terms_selection.html', context)
 
 
 def course_list(request):
@@ -16,17 +72,40 @@ def course_list(request):
 
 
 def course_details(request, course_id):
-    context = RequestContext(request)
-    context['current_student'] = Student.objects.get(id=request.session.get('user'))
-    context['course'] = Course.objects.get(id=course_id)
+    context = {
+        'current_student': Student.objects.get(id=request.session.get('user')),
+        'course': Course.objects.get(id=course_id)
+    }
     return render(request, 'course/details.html', context)
 
 
-def course_join(request, course_id):
-    context = RequestContext(request)
+def course_leave(request, course_id):
     student = Student.objects.get(id=request.session.get('user'))
-    context['courses'] = enumerate(Course.objects.all())
-    context['current_student'] = student
+
+    context = {
+        'courses': enumerate(Course.objects.all()),
+        'current_student': student
+    }
+
+    if course_id is not 0:
+        course = Course.objects.get(id=course_id)
+        student.courses.remove(course)
+
+        try:
+            student.save()
+            context['successes'] = [u'Przedmiot został usunięty z Twojej listy.']
+        except Student.DoesNotExist:
+            context['errors'] = [u'Wystąpił błąd podczas wypisywania się z przedmiotu.']
+
+    return render(request, 'course/list.html', context)
+
+
+def course_join(request, course_id):
+    student = Student.objects.get(id=request.session.get('user'))
+    context = {
+        'courses': enumerate(Course.objects.all()),
+        'current_student': student
+    }
 
     if course_id is not 0:
         course = Course.objects.get(id=course_id)

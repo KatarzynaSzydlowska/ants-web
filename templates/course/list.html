@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}Lista przedmiotów{% endblock %}
+{% load ants_web_tags %}
 
 {% block content %}
     <h2 class="page-header">Lista przedmiotów</h2>
@@ -28,8 +29,8 @@
                     <a href="{% url 'course_details' course.id %}">Szczegóły</a>
                 </td>
                 <td>
-                    {% if current_student.has_joined_course %}
-                        <a href="{% url 'course_join' course.id %}">Zrezygnuj</a>
+                    {% if current_student|has_student_joined_course:course %}
+                        <a href="{% url 'course_leave' course.id %}">Zrezygnuj</a>
                     {% else %}
                         <a href="{% url 'course_join' course.id %}">Dołącz</a>
                     {% endif %}

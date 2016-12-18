@@ -6,15 +6,6 @@ table tbody tr:nth-child(even) {
     background-color: #dedede;
 }
 
-.table-curved {
-    border-collapse: separate;
-}
-
-.table-curved {
-    border-radius: 10px;
-}
-
-
 #mainContainer {padding-top: 55px;}
 
 #content {
@@ -29,3 +20,23 @@ table tbody tr:nth-child(even) {
 }
 
 #loginBox h2 {margin-bottom:20px;}
+
+.tr-inverse {
+    background-color: #373a3c !important;
+    color: #ffffff;
+}
+
+.tr-header {
+    background-color: #62676b !important;
+    color: #ffffff;
+    font-weight: 800;
+    text-align: center;
+}
+
+.tr-header td {
+    padding: 3px !important;
+}
+
+.terms_selection td textarea, .terms_selection td input {
+    width: 100%;
+}

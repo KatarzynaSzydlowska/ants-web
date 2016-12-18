@@ -29,6 +29,17 @@ class Course(models.Model):
     def get_terms(self):
         return Term.objects.all().filter(course=self)
 
+    def get_choosable_terms(self):
+        return Term.objects.all().filter(course=self, kind=3).order_by('day_of_week', 'starts_at')
+
+    def validate_points(self, points):
+        terms = self.get_choosable_terms()
+        points_sum = 0
+        for term in terms:
+            points_sum += points.get(term.id, 0)
+
+        return points_sum <= 15
+
 
 class InstructorManager(models.Manager):
     @classmethod
@@ -137,4 +148,28 @@ class Student(models.Model):
         return make_password(password, None, hasher='unsalted_md5')
 
     def has_joined_course(self, course):
-        return len(self.courses.filter(course_id=course.id))
+        return len(self.courses.filter(id=course.id))
+
+
+class TermSelectionManager(models.Manager):
+    @classmethod
+    def create_or_update(cls, student_id, term_id, points, comment):
+        student = Student.objects.get(id=student_id)
+        term = Term.objects.get(id=term_id)
+
+        try:
+            selection = TermSelection.objects.get(student=student, term=term)
+            selection.points = points
+            selection.comment = comment
+        except TermSelection.DoesNotExist:
+            selection = TermSelection(student=student, term=term, points=points, comment=comment)
+
+        return selection
+
+
+class TermSelection(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    term = models.ForeignKey(Term, on_delete=models.CASCADE)
+    points = models.IntegerField()
+    comment = models.CharField(max_length=256)
+    objects = TermSelectionManager()
