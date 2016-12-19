@@ -8,6 +8,9 @@ from django.db import models
 class CourseManager(models.Manager):
     @classmethod
     def create(cls, name):
+        if not len(name):
+            raise ValueError('Nazwa przedmiotu  nie może być pusta')
+
         return Course(name=name)
 
     def get_or_create(self, name):
@@ -38,7 +41,7 @@ class Course(models.Model):
         for term in terms:
             points_sum += points.get(term.id, 0)
 
-        return points_sum <= 15
+        return 15 >= points_sum > 0
 
 
 class InstructorManager(models.Manager):
@@ -50,7 +53,7 @@ class InstructorManager(models.Manager):
         try:
             return self.get(name=name)
         except Instructor.DoesNotExist:
-            return Instructor.objects.create(name=name, email=email)
+            return self.create(name=name, email=email)
 
 
 class Instructor(models.Model):
@@ -98,7 +101,8 @@ class Term(models.Model):
     objects = TermManager()
 
     terms_types = {
-        'Wykład': 1, 'Ćwiczenia Projektowe': 2, 'Lab.': 3, 'Zajęcia Seminaryjne': 4, 'Course': 5, 'Konwersatorium': 6}
+        'Wykład': 1, 'Ćwiczenia Projektowe': 2, 'Lab.': 3, 'Zajęcia Seminaryjne': 4, 'Course': 5,
+        'Konwersatorium': 6}
     terms_names = {1: 'Wykład', 2: 'Ćwiczenia Projektowe', 3: 'Labolatorium', 4: 'Seminarium', 5: 'Kurs',
                    6: 'Konwersatorium'}
     days_of_week = {'M': 1, 'T': 2, 'W': 3, 'Th': 4, 'F': 5}
@@ -149,6 +153,24 @@ class Student(models.Model):
 
     def has_joined_course(self, course):
         return len(self.courses.filter(id=course.id))
+
+    def set_new_password(self, current_password, new_password, rep_password):
+        hashed_old_password = Student.get_hashed_password(current_password)
+
+        errors = []
+        if not self.password == hashed_old_password:
+            errors.append("Błędne stare hasło.")
+        elif not new_password == rep_password:
+            errors.append("Podane hasła są róźne.")
+        elif len(new_password) < 6:
+            errors.append("Podane hasło jest zbyt krótkie")
+
+        if len(errors):
+            return errors
+
+        self.password = Student.get_hashed_password(new_password)
+        self.is_activated = True
+        return []
 
 
 class TermSelectionManager(models.Manager):

@@ -1,0 +1,200 @@
+Name,Section,Type,Title,Day Of Week,First Date,Last Date,Published Start,Published End,Location,Capacity,Instructor / Sponsor,Email,Approved
+FiIS-OB AAlg(p+s),1,Ćwiczenia Projektowe,Analiza Algorytmów(p+s),M,3.10.2016,10.10.2016,14:40,16:55,D-10 204,15,"dr hab. inż. Gawroński, P",gawron@newton.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Lab.,Dźwięk i Muzyka W Systemach Komputerowych,W,5.10.2016,26.10.2016,11:20,12:50,D-10 207,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Lab.,Dźwięk i Muzyka W Systemach Komputerowych,W,9.11.2016,21.12.2016,11:20,12:50,D-10 207,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Lab.,Dźwięk i Muzyka W Systemach Komputerowych,W,4.1.2017,18.1.2017,11:20,12:50,D-10 207,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Wykład,Dźwięk i Muzyka W Systemach Komputerowych,T,4.10.2016,25.10.2016,16:20,17:50,D-11 18,72,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Wykład,Dźwięk i Muzyka W Systemach Komputerowych,T,8.11.2016,20.12.2016,16:20,17:50,D-11 18,72,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB DiMwSK,1,Wykład,Dźwięk i Muzyka W Systemach Komputerowych,T,3.1.2017,17.1.2017,16:20,17:50,D-11 18,72,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Lab.,Eksploracja Danych (l+p) (G/M-1rok),M,3.10.2016,24.10.2016,8:50,11:05,D-10 205,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Lab.,Eksploracja Danych (l+p) (G/M-1rok),M,7.11.2016,19.12.2016,8:50,11:05,D-10 205,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Lab.,Eksploracja Danych (l+p) (G/M-1rok),M,9.1.2017,23.1.2017,8:50,11:05,D-10 205,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),2,Lab.,Eksploracja Danych (l+p) (G/M-1rok),Th,6.10.2016,3.11.2016,9:40,11:55,D-10 204,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),2,Lab.,Eksploracja Danych (l+p) (G/M-1rok),Th,17.11.2016,15.12.2016,9:40,11:55,D-10 204,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),2,Lab.,Eksploracja Danych (l+p) (G/M-1rok),Th,5.1.2017,19.1.2017,9:40,11:55,D-10 204,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),2,Lab.,Eksploracja Danych (l+p) (G/M-1rok),T,24.1.2017,,9:40,11:55,D-10 204,15,"dr inż. Łukasik, S
+prof. dr hab Kulczycki, P","slukasik@ibspan.waw.pl
+kulpi@ibspan.waw.pl",5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Wykład,Eksploracja Danych (l+p) (G/M-1rok),Th,6.10.2016,3.11.2016,12:10,13:40,D-10 C-różowa,90,"prof. dr hab Kulczycki, P",kulpi@ibspan.waw.pl,5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Wykład,Eksploracja Danych (l+p) (G/M-1rok),Th,17.11.2016,15.12.2016,12:10,13:40,D-10 C-różowa,90,"prof. dr hab Kulczycki, P",kulpi@ibspan.waw.pl,5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Wykład,Eksploracja Danych (l+p) (G/M-1rok),Th,5.1.2017,19.1.2017,12:10,13:40,D-10 C-różowa,90,"prof. dr hab Kulczycki, P",kulpi@ibspan.waw.pl,5.10.2016
+FiIS-IS-2-GKPO ED(G/M-1rok),1,Wykład,Eksploracja Danych (l+p) (G/M-1rok),T,24.1.2017,,12:10,13:40,D-10 C-różowa,90,"prof. dr hab Kulczycki, P",kulpi@ibspan.waw.pl,5.10.2016
+FiIS-OB EKW,1,Wykład,Elementy Kosmologii Współczesnej,F,7.10.2016,4.11.2016,8:00,10:15,D-10 319,42,"dr Płazak, T",plazak@agh.edu.pl,5.10.2016
+FiIS-OB EKW,1,Wykład,Elementy Kosmologii Współczesnej,Th,10.11.2016,,8:00,10:15,D-10 319,42,"dr Płazak, T",plazak@agh.edu.pl,5.10.2016
+FiIS-OB EKW,1,Wykład,Elementy Kosmologii Współczesnej,F,18.11.2016,16.12.2016,8:00,10:15,D-10 319,42,"dr Płazak, T",plazak@agh.edu.pl,5.10.2016
+FiIS-OB EKW,1,Wykład,Elementy Kosmologii Współczesnej,F,13.1.2017,20.1.2017,8:00,10:15,D-10 319,42,"dr Płazak, T",plazak@agh.edu.pl,5.10.2016
+FiIS-OB EKW,1,Wykład,Elementy Kosmologii Współczesnej,W,25.1.2017,,8:00,10:15,D-10 319,42,"dr Płazak, T",plazak@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Lab.,Geometria Komputerowa (1rok),W,5.10.2016,26.10.2016,17:10,18:40,D-10 101,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Lab.,Geometria Komputerowa (1rok),W,9.11.2016,21.12.2016,17:10,18:40,D-10 101,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Lab.,Geometria Komputerowa (1rok),W,4.1.2017,18.1.2017,17:10,18:40,D-10 101,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),2,Lab.,Geometria Komputerowa (1rok),T,4.10.2016,25.10.2016,8:00,9:30,D-10 205,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),2,Lab.,Geometria Komputerowa (1rok),T,8.11.2016,20.12.2016,8:00,9:30,D-10 205,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),2,Lab.,Geometria Komputerowa (1rok),T,3.1.2017,17.1.2017,8:00,9:30,D-10 205,15,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Wykład,Geometria Komputerowa (1rok),Th,6.10.2016,3.11.2016,15:30,17:00,D-11 104,30,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Wykład,Geometria Komputerowa (1rok),Th,17.11.2016,15.12.2016,15:30,17:00,D-11 104,30,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Wykład,Geometria Komputerowa (1rok),Th,5.1.2017,19.1.2017,15:30,17:00,D-11 104,30,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO GeomKomp(1rok),1,Wykład,Geometria Komputerowa (1rok),T,24.1.2017,,15:30,17:00,D-11 104,30,"prof. dr hab. Kaprzyk, S",kaprzyk@ftj.agh.edu.pl,5.10.2016
+FiIS-OB IMNII,1,Lab.,Inżynierskie Metody Numeryczne II,T,4.10.2016,25.10.2016,17:10,20:10,D-10 207,15,"mgr inż. Żebrowski, D",Dariusz.zebrowski@fis.agh.edu.pl,5.10.2016
+FiIS-OB IMNII,1,Lab.,Inżynierskie Metody Numeryczne II,T,8.11.2016,22.11.2016,17:10,20:10,D-10 207,15,"mgr inż. Żebrowski, D",Dariusz.zebrowski@fis.agh.edu.pl,5.10.2016
+FiIS-OB IMNII,1,Wykład,Inżynierskie Metody Numeryczne II,F,7.10.2016,4.11.2016,18:50,21:05,U-5 07,12,"dr hab. inż. Chwiej, T",chwiej@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB IMNII,1,Wykład,Inżynierskie Metody Numeryczne II,Th,10.11.2016,,18:50,21:05,U-5 07,12,"dr hab. inż. Chwiej, T",chwiej@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB IMNII,1,Wykład,Inżynierskie Metody Numeryczne II,F,18.11.2016,9.12.2016,18:50,21:05,U-5 07,12,"dr hab. inż. Chwiej, T",chwiej@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,6.10.2016,3.11.2016,9:40,11:10,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,17.11.2016,15.12.2016,9:40,11:10,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,5.1.2017,19.1.2017,9:40,11:10,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),T,24.1.2017,,9:40,11:10,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),2,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,6.10.2016,3.11.2016,13:50,15:20,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),2,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,17.11.2016,15.12.2016,13:50,15:20,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),2,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,5.1.2017,19.1.2017,13:50,15:20,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),2,Lab.,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),T,24.1.2017,,13:50,15:20,D-10 101,15,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Wykład,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),F,7.10.2016,4.11.2016,13:00,14:30,D-10 1,30,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Wykład,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),Th,10.11.2016,,13:00,14:30,D-10 1,30,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Wykład,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),F,18.11.2016,16.12.2016,13:00,14:30,D-10 1,30,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Wykład,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),F,13.1.2017,20.1.2017,13:00,14:30,D-10 1,30,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO KEiPG(1rok),1,Wykład,Komputerowa Edycja i Przetwarzanie Grafiki (1rok),W,25.1.2017,,13:00,14:30,D-10 1,30,"dr inż. Śniechowski, M",sniechowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Zajęcia Seminaryjne,Materiały i Przyrządy Półprzewodnikowe,W,5.10.2016,26.10.2016,14:40,16:10,D-10 319,42,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Zajęcia Seminaryjne,Materiały i Przyrządy Półprzewodnikowe,W,9.11.2016,21.12.2016,14:40,16:10,D-10 319,42,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Zajęcia Seminaryjne,Materiały i Przyrządy Półprzewodnikowe,W,4.1.2017,18.1.2017,14:40,16:10,D-10 319,42,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Wykład,Materiały i Przyrządy Półprzewodnikowe,W,5.10.2016,26.10.2016,13:00,14:30,D-10 D-czarna,90,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Wykład,Materiały i Przyrządy Półprzewodnikowe,W,9.11.2016,21.12.2016,13:00,14:30,D-10 D-czarna,90,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+FiIS-OB MiPP,1,Wykład,Materiały i Przyrządy Półprzewodnikowe,W,4.1.2017,18.1.2017,13:00,14:30,D-10 D-czarna,90,"prof. dr hab. Adamowski, J",adamowski@ftj.agh.edu.pl,5.10.2016
+"[OB] Mikrotomografia
+  FiIS-OB Mikortmgr",FiIS-OB Mikortmgr Lab. 2,Course,Mikrotomografia,W,16.11.2016,,18:00,19:30,D-10 205,15,,,14.11.2016
+"[OB] Mikrotomografia
+  FiIS-OB Mikortmgr",FiIS-OB Mikortmgr Lab. 2,Course,Mikrotomografia,W,23.11.2016,,8:00,9:30,D-10 207,15,,,14.11.2016
+"[OB] Mikrotomografia
+  FiIS-OB Mikortmgr",FiIS-OB Mikortmgr Lab. 2,Course,Mikrotomografia,F,25.11.2016,,15:45,17:15,D-10 205,15,,,14.11.2016
+FiIS-OB Mikortmgr,1,Konwersatorium,Mikrotomografia,F,16.12.2016,,14:40,16:10,U-5 08,24,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Konwersatorium,Mikrotomografia,F,13.1.2017,20.1.2017,14:40,16:10,U-5 08,24,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Konwersatorium,Mikrotomografia,W,25.1.2017,,14:40,16:10,U-5 08,24,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,13.10.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,27.10.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,17.11.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,1.12.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,15.12.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,Th,12.1.2017,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Lab.,Mikrotomografia,T,24.1.2017,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,6.10.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,20.10.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,3.11.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,24.11.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,8.12.2016,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,5.1.2017,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,2,Lab.,Mikrotomografia,Th,19.1.2017,,17:10,18:40,D-10 205,15,"dr inż. Wroński, S",wronski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Wykład,Mikrotomografia,F,7.10.2016,4.11.2016,15:30,17:00,U-5 08,24,"dr hab. inż. Tarasiuk, J",tarasiuk@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Wykład,Mikrotomografia,Th,10.11.2016,,15:30,17:00,U-5 08,24,"dr hab. inż. Tarasiuk, J",tarasiuk@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB Mikortmgr,1,Wykład,Mikrotomografia,F,18.11.2016,9.12.2016,15:30,17:00,U-5 08,24,"dr hab. inż. Tarasiuk, J",tarasiuk@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Lab.,Multicore Programming(l+p),T,4.10.2016,25.10.2016,8:00,9:30,D-10 101,15,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Lab.,Multicore Programming(l+p),T,8.11.2016,20.12.2016,8:00,9:30,D-10 101,15,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Lab.,Multicore Programming(l+p),T,3.1.2017,17.1.2017,8:00,9:30,D-10 101,15,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,12.10.2016,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,26.10.2016,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,16.11.2016,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,30.11.2016,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,14.12.2016,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,4.1.2017,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB MulticoreProg,1,Wykład,Multicore Programming(l+p),W,18.1.2017,,8:00,9:30,D-10 1,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB R,1,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),T,4.10.2016,25.10.2016,11:20,12:50,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,1,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),T,8.11.2016,13.12.2016,11:20,12:50,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,1a,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),W,5.10.2016,26.10.2016,9:40,11:10,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,1a,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),W,9.11.2016,14.12.2016,9:40,11:10,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,2,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),M,3.10.2016,24.10.2016,11:20,12:50,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,2,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),M,7.11.2016,12.12.2016,11:20,12:50,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,2a,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),T,4.10.2016,25.10.2016,13:00,14:30,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+FiIS-OB R,2a,Lab.,Pakiet R w Obliczeniach Statystycznych (l+p),T,8.11.2016,13.12.2016,13:00,14:30,D-10 224,15,"dr inż. Gałkowski, M",galek1@poczta.onet.pl,5.10.2016
+"Pakiet R
+  FiIS-OB R",FiIS-OB R Lab. 2,Course,Pakiet R w Obliczeniach Statystycznych (l+p),W,14.12.2016,,9:40,11:10,D-11 104,30,,,14.11.2016
+FiIS-OB PObl,1,Lab.,Pakiety Obliczeniowe (l+p),M,3.10.2016,24.10.2016,15:30,17:45,D-10 101,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,1,Lab.,Pakiety Obliczeniowe (l+p),M,7.11.2016,19.12.2016,15:30,17:45,D-10 101,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,1,Lab.,Pakiety Obliczeniowe (l+p),M,9.1.2017,23.1.2017,15:30,17:45,D-10 101,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,2,Lab.,Pakiety Obliczeniowe (l+p),T,4.10.2016,25.10.2016,16:20,18:35,D-10 205,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,2,Lab.,Pakiety Obliczeniowe (l+p),T,8.11.2016,20.12.2016,16:20,18:35,D-10 205,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,2,Lab.,Pakiety Obliczeniowe (l+p),T,3.1.2017,17.1.2017,16:20,18:35,D-10 205,15,"dr inż. Bartyzel, J",bartyzel@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,1,Wykład,Pakiety Obliczeniowe (l+p),W,5.10.2016,26.10.2016,11:20,12:50,D-10 D-czarna,90,"dr hab. inż. Stęgowski, Z",stegowski@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB PObl,1,Wykład,Pakiety Obliczeniowe (l+p),W,9.11.2016,23.11.2016,11:20,12:50,D-10 D-czarna,90,"dr hab. inż. Stęgowski, Z",stegowski@novell.ftj.agh.edu.pl,5.10.2016
+"wykład
+  FiIS-OB PObl",Course,Course,Pakiety Obliczeniowe (l+p),W,11.1.2017,18.1.2017,8:00,9:30,D-10 D-czarna,90,,,22.11.2016
+"wykład
+  FiIS-OB PObl",Course,Course,Pakiety Obliczeniowe (l+p),W,11.1.2017,18.1.2017,11:30,12:45,D-10 D-czarna,90,,,22.11.2016
+FiIS-OB j.Scala,1,Lab.,Programowanie Funkcjonalne w Języku Scala,F,7.10.2016,4.11.2016,11:20,12:50,D-10 206,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Lab.,Programowanie Funkcjonalne w Języku Scala,Th,10.11.2016,,11:20,12:50,D-10 206,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Lab.,Programowanie Funkcjonalne w Języku Scala,F,18.11.2016,16.12.2016,11:20,12:50,D-10 206,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Lab.,Programowanie Funkcjonalne w Języku Scala,F,13.1.2017,20.1.2017,11:20,12:50,D-10 206,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Lab.,Programowanie Funkcjonalne w Języku Scala,W,25.1.2017,,11:20,12:50,D-10 206,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,2,Lab.,Programowanie Funkcjonalne w Języku Scala,M,3.10.2016,24.10.2016,11:20,12:50,D-10 204,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,2,Lab.,Programowanie Funkcjonalne w Języku Scala,M,7.11.2016,19.12.2016,11:20,12:50,D-10 204,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,2,Lab.,Programowanie Funkcjonalne w Języku Scala,M,9.1.2017,23.1.2017,11:20,12:50,D-10 204,15,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Wykład,Programowanie Funkcjonalne w Języku Scala,F,7.10.2016,4.11.2016,18:00,19:30,D-10 D-czarna,90,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Wykład,Programowanie Funkcjonalne w Języku Scala,Th,10.11.2016,,18:00,19:30,D-10 D-czarna,90,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Wykład,Programowanie Funkcjonalne w Języku Scala,F,18.11.2016,16.12.2016,18:00,19:30,D-10 D-czarna,90,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Wykład,Programowanie Funkcjonalne w Języku Scala,F,13.1.2017,20.1.2017,18:00,19:30,D-10 D-czarna,90,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB j.Scala,1,Wykład,Programowanie Funkcjonalne w Języku Scala,W,25.1.2017,,18:00,19:30,D-10 D-czarna,90,"dr inż. Bołd, T",bold@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO Przdsb(G/M-1rok),1,Wykład,Przedsiębiorczość (G/M-1rok),Th,6.10.2016,3.11.2016,8:00,9:30,C-1 224,135,"dr inż. Kowal, D",dkowal@zarz.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO Przdsb(G/M-1rok),1,Wykład,Przedsiębiorczość (G/M-1rok),Th,17.11.2016,15.12.2016,8:00,9:30,C-1 224,135,"dr inż. Kowal, D",dkowal@zarz.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO Przdsb(G/M-1rok),1,Wykład,Przedsiębiorczość (G/M-1rok),Th,5.1.2017,19.1.2017,8:00,9:30,C-1 224,135,"dr inż. Kowal, D",dkowal@zarz.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO Przdsb(G/M-1rok),1,Wykład,Przedsiębiorczość (G/M-1rok),T,24.1.2017,,8:00,9:30,C-1 224,135,"dr inż. Kowal, D",dkowal@zarz.agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Lab.,Python In The Enterprise (l+p),W,5.10.2016,26.10.2016,13:00,14:30,D-10 205,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),1,Lab.,Python In The Enterprise (l+p),W,9.11.2016,21.12.2016,13:00,14:30,D-10 205,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),1,Lab.,Python In The Enterprise (l+p),W,4.1.2017,18.1.2017,13:00,14:30,D-10 205,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),2,Lab.,Python In The Enterprise (l+p),M,3.10.2016,24.10.2016,17:10,18:40,D-10 206,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),2,Lab.,Python In The Enterprise (l+p),M,7.11.2016,19.12.2016,17:10,18:40,D-10 206,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),2,Lab.,Python In The Enterprise (l+p),M,9.1.2017,23.1.2017,17:10,18:40,D-10 206,15,"mgr inż. Majewski, M",maciej.w.majewski@gmail.com,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,13.10.2016,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,27.10.2016,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,17.11.2016,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,1.12.2016,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,15.12.2016,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),Th,12.1.2017,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-OB PiTE(l+p),1,Wykład,Python In The Enterprise (l+p),T,24.1.2017,,17:10,18:40,D-11 104,30,"dr hab. inż. Szumlak, T",Tomasz.Szumlak@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,1,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),T,4.10.2016,25.10.2016,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,1,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),T,8.11.2016,20.12.2016,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,1,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),T,3.1.2017,17.1.2017,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,2,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),W,5.10.2016,26.10.2016,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,2,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),W,9.11.2016,21.12.2016,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,2,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),W,4.1.2017,18.1.2017,11:00,14:00,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,3,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),M,3.10.2016,24.10.2016,8:15,11:15,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,3,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),M,7.11.2016,19.12.2016,8:15,11:15,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,3,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),M,9.1.2017,23.1.2017,8:15,11:15,D-10 209,8,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,4,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),F,7.10.2016,4.11.2016,14:45,17:45,D-10 209,8,"dr inż. Moroń, J",jmoroni@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,4,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),Th,10.11.2016,,14:45,17:45,D-10 209,8,"dr inż. Moroń, J",jmoroni@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,4,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),F,18.11.2016,16.12.2016,14:45,17:45,D-10 209,8,"dr inż. Moroń, J",jmoroni@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,4,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),F,13.1.2017,20.1.2017,14:45,17:45,D-10 209,8,"dr inż. Moroń, J",jmoroni@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,4,Lab.,Techniki Mikroprocesorowe(l+p) (G/M-1rok),W,25.1.2017,,14:45,17:45,D-10 209,8,"dr inż. Moroń, J",jmoroni@agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,1,Wykład,Techniki Mikroprocesorowe(l+p) (G/M-1rok),T,4.10.2016,25.10.2016,14:40,16:10,D-11 18,72,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-IS-2-GKPO TechMik(G/M-1rok) 	,1,Wykład,Techniki Mikroprocesorowe(l+p) (G/M-1rok),T,8.11.2016,13.12.2016,14:40,16:10,D-11 18,72,"dr inż. Świentek, K",k.swientek@ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Lab.,Wizualizacja i Grafika Komputerowa,T,4.10.2016,25.10.2016,18:00,19:30,D-10 206,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Lab.,Wizualizacja i Grafika Komputerowa,T,8.11.2016,20.12.2016,18:00,19:30,D-10 206,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Lab.,Wizualizacja i Grafika Komputerowa,T,3.1.2017,17.1.2017,18:00,19:30,D-10 206,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,2,Lab.,Wizualizacja i Grafika Komputerowa,W,5.10.2016,26.10.2016,14:40,16:10,D-10 207,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,2,Lab.,Wizualizacja i Grafika Komputerowa,W,9.11.2016,21.12.2016,14:40,16:10,D-10 207,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,2,Lab.,Wizualizacja i Grafika Komputerowa,W,4.1.2017,18.1.2017,14:40,16:10,D-10 207,15,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Wykład,Wizualizacja i Grafika Komputerowa,T,4.10.2016,25.10.2016,16:20,17:50,D-10 C-różowa,90,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Wykład,Wizualizacja i Grafika Komputerowa,T,8.11.2016,20.12.2016,16:20,17:50,D-10 C-różowa,90,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WiGK,1,Wykład,Wizualizacja i Grafika Komputerowa,T,3.1.2017,17.1.2017,16:20,17:50,D-10 C-różowa,90,"dr inż. Kawecka-Magiera, B",basia@novell.ftj.agh.edu.pl,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,7.10.2016,4.11.2016,13:00,14:30,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,Th,10.11.2016,,13:00,14:30,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,18.11.2016,16.12.2016,13:00,14:30,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,13.1.2017,20.1.2017,13:00,14:30,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,W,25.1.2017,,13:00,14:30,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],2,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,7.10.2016,4.11.2016,11:20,12:50,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],2,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,Th,10.11.2016,,11:20,12:50,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],2,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,18.11.2016,16.12.2016,11:20,12:50,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],2,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,13.1.2017,20.1.2017,11:20,12:50,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],2,Lab.,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,W,25.1.2017,,11:20,12:50,D-10 205,15,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Wykład,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,7.10.2016,4.11.2016,9:40,11:10,D-10 123,42,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Wykład,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,Th,10.11.2016,,9:40,11:10,D-10 123,42,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Wykład,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,18.11.2016,16.12.2016,9:40,11:10,D-10 123,42,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Wykład,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,F,13.1.2017,20.1.2017,9:40,11:10,D-10 123,42,"Gwiazda, D",,5.10.2016
+FiIS-OB WAIO-PA[zew],1,Wykład,Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne,W,25.1.2017,,9:40,11:10,D-10 123,42,"Gwiazda, D",,5.10.2016
