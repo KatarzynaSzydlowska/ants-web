@@ -1,7 +1,7 @@
 {% if request.session.user != None %}
     <ul class="nav navbar-nav float-sm-right">
         <li class="nav-item">
-            <span class="nav-link">Zalogowany jako {{ current_student }}</span>
+            <span class="nav-link">Zalogowany jako {{ current_student.name }} {{ current_student.surname }} </span>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'change_password' %}">Zmiana hasła</a>

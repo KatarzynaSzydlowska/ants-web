@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #from unittest import TestCase
+from django.contrib.sessions.middleware import SessionMiddleware
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
-from django.core.urlresolvers import reverse
-from django.contrib.sessions.middleware import SessionMiddleware
 
 from models import *
 from views import *
@@ -140,34 +140,6 @@ class TermTestCase(TestCase):
         self.assertEqual(u'Piątek', term.get_day_of_week_name())
 
 
-class StudentTestCase(TestCase):
-    def setUp(self):
-        self.student = Student(index=123, name="Pawel", surname="Semon", group_id="3", password="testpassword")
-
-    def test__str__(self):
-        self.assertEqual(self.student.__str__(), "Pawel Semon")
-
-    def test_get_hashed_password(self):
-        self.assertEqual(
-            make_password(self.student.password, None, hasher='unsalted_md5'),
-            self.student.get_hashed_password(self.student.password)
-        )
-
-
-class StudentManagerTestCase(TestCase):
-    def setUp(self):
-        self.student = Student.objects.create(
-            index=123, name="Pawel", surname="Semon", group="3", password="testpassword"
-        )
-
-    def test_create(self):
-        self.assertEqual(self.student.index, self.student.index)
-        self.assertEqual(self.student.name, self.student.name)
-        self.assertEqual(self.student.surname, self.student.surname)
-        self.assertEqual(self.student.group_id, self.student.group_id)
-        self.assertEqual(self.student.password, Student.get_hashed_password("testpassword"))
-
-
 class ViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()
@@ -178,38 +150,6 @@ class ViewTestCase(TestCase):
         self.student.is_activated = True
         self.student.save()
 
-    def test_index_guest(self):
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Logowanie')
-
-    def test_index_user(self):
-        request = self.factory.get(reverse('index'))
-        request.session = {'user': self.student.id}
-        response = index_user(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Zalogowany jako ' + self.student.name + ' '+self.student.surname)
-
-    def test_index_go_to_login(self):
-        request = self.factory.get(reverse('index'))
-        request.session = {'user': None}
-        response = index(request)
-        self.assertContains(response, 'Logowanie')
-
-    def test_index_go_to_dashboard(self):
-        request = self.factory.get(reverse('index'))
-        request.session = {'user': self.student.id}
-        response = index_user(request)
-        self.assertEqual(response.status_code, 200)
-
-    def test_login_go_to_password_change(self):
-        self.student.is_activated = False
-        self.student.save()
-        request = self.factory.post('/login/', {'index_number': '123', 'password': 'passwordtest'})
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        response = login(request)
-        self.assertRedirects(response, reverse('change_password'))
 
     def test_negative_login(self):
         request = self.factory.post(reverse('login'), {'index_number': '123', 'password': 'test'})
