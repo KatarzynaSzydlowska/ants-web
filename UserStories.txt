@@ -1,0 +1,70 @@
+- Jako student chcę aktywować konto na stronie by móc wziąć udział w zapisach
+* login to indeks
+* domyślne hasło to ImieNazwisko bez polskich znaków
+* przy pierwszym logowaniu wymuszona jest zmiana hasła
+
+- Jako student chcę wybrać przedmioty, na które jestem zapisany
+* widoczne są jedynie przedmioty z grupy, do której należy student
+* przedmioty są posortowane według nazwy
+* istnieje możliwość zresetowania ustawień
+
+- Jako student chcę przypisać terminom z każdego przedmiotu wagi by określić, które terminy najbardziej mi odpowiadają
+* jest możliwość oznaczenia terminu jako "niemożliwy" wraz z koniecznym do wypełnienia polem "powód"
+* trzeba przypisać każdemu terminowi wagę by móc zapisać wybór
+* wagi są do wyboru z listy
+* istnieje możliwość zresetowania ustawień
+
+- Jako student chcę sprawdzić do jakich grup zostałem zapisany
+* lista posortowana według terminu zajęć
+* możliwe dopiero po udostępnieniu wyników przez adminów
+
+- Jako student chcę sprawdzić całościowe wyniki podziału na grupy by wiedzieć z kim jestem w grupie
+* lista przedmiotów posortowana po nazwie
+* po kliknięciu na przedmiot wyświetlane są jego terminy
+* pod każdym terminem wyświetlana jest lista osób na niego zapisanych, w formie "Nazwisko Imię" (z polskimi znakami), posortowana alfabetycznie
+
+- Jako student chcę zmienić hasło
+* konieczność podania starego hasła
+* dwa razy wpisywanie hasła by potwierdzić
+
+- Jako administrator chcę wczytać listę studentów z pliku csv
+* dane znajdujące się na liście: nr indeksu, imię, nazwisko, grupa
+* sprawdzenie, że żadne pole nie może być puste
+* każde kolejne wczytanie dopisuje do listy studentów, a nie tworzy nową
+
+- Jako administrator chcę wyświetlić i edytować listę studentów by móc nanieść ewentualne poprawki
+* dane znajdujące się na liście: nr indeksu, imię, nazwisko, grupa, informacja czy student już: aktywował konto, wybrał przedmioty, wybrał terminy
+* możliwość zresetowania hasła
+* opcja nadania studentowi praw administratora
+* możliwość dodania nowego studenta
+
+- Jako administrator chcę wczytać listę przedmiotów i ich terminów z pliku csv
+* dane znajdujące się na liście: nazwa przedmiotu, prowadzący, sala, dzień tygodnia, godzina rozpoczęcia, godzina zakończenia, grupy, które mogą się na dany termin zapisać, pojemność sali
+* sprawdzenie czy godzina rozpoczęcia nie jest później niż godzina zakończenia
+
+- Jako administrator chcę edytować listę przedmiotów i ich terminów
+* możliwość dodania nowego terminu
+* możliwość dodania nowego przedmiotu
+* możliwość zmiany wszystkich parametrów
+
+- Jako administrator chcę otworzyć zapisy by umożliwić studentom aktywowanie kont i wybór terminów
+* przed otwarciem zapisów jedynie administratorzy mogli się logować
+
+- Jako administrator chcę wyświetlić listę powodów "niemożliwe" i zaakceptować je lub odrzucić
+* dane znajdujące się na liście: nr indeksu, imię i nazwisko studenta, nazwa przedmiotu, termin, powód
+
+- Jako administrator chcę wyświetlić listę osób, które wybrały tak terminy, że fizycznie nie są w stanie chodzić na wszystkie przedmioty
+* dane znajdujące się na liście: nr indeksu, imię i nazwisko studenta, terminy które ze sobą kolidują
+
+- Jako administrator chcę wyświetlić listę przedmiotów, na które się zapisało więcej osób niż suma miejsc na wszystkich terminach
+* dane znajdujące się na liście: nazwa przedmiotu, terminy wraz z pojemnością sali, lista osób zapisanych
+
+- Jako administrator chcę zamknąć zapisy by uniemożliwić studentom wprowadzanie zmian w wybranych przez nich terminach
+* administratorzy ciągle mają możliwość logowania
+* studencie przy próbie zalogowania widzą informację, że system jest już zamknięty, a wyników jeszcze nie ma
+
+- Jako administrator chcę móc udostępnić przeglądanie wyników by studenci mogli sprawdzić gdzie zostali przydzieleni
+* studenci mogą jedynie sprawdzać wyniki, nie mogą dokonywać zmian w wyborze
+
+
+
