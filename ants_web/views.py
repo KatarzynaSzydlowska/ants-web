@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.template import loader, RequestContext
 from django.template.context_processors import csrf
 
 from models import Student, Course, TermSelection
@@ -32,7 +31,7 @@ def terms_selection(request):
 
         for course in courses:
             if not course.validate_points(points):
-                context['errors'] = [u'Możesz przydzielić maksymalnie 15 punktów na przedmiot ' + course.name]
+                context['errors'] = [u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + course.name + u')']
 
         if 'errors' not in context:
             for term_id, point in points.items():
@@ -65,9 +64,10 @@ def terms_selection(request):
 
 
 def course_list(request):
-    context = RequestContext(request)
-    context['current_student'] = Student.objects.get(id=request.session.get('user'))
-    context['courses'] = enumerate(Course.objects.all())
+    context = {
+        'current_student': Student.objects.get(id=request.session.get('user')),
+        'courses': enumerate(Course.objects.all())
+    }
     return render(request, 'course/list.html', context)
 
 
@@ -121,14 +121,14 @@ def course_join(request, course_id):
 
 
 def index_guest(request):
-    context = RequestContext(request)
-    template = loader.get_template('login.html')
+    context = {}
     context.update(csrf(request))
-    return HttpResponse(template.render(context))
+    return render(request, 'login.html', context)
 
 
 def index_user(request):
-    context = RequestContext(request)
+    context = {}
+
     try:
         context['current_student'] = Student.objects.get(id=request.session.get('user', 0))
     except Student.DoesNotExist:
@@ -138,13 +138,11 @@ def index_user(request):
     if not context['current_student'].is_activated:
         return HttpResponseRedirect('/change_password/')
 
-    template = loader.get_template('dashboard.html')
-    return HttpResponse(template.render(context))
+    return render(request, 'dashboard.html', context)
 
 
 def login(request):
-    context = RequestContext(request)
-    context['current_student'] = None
+    context = {'current_student': None}
     username = request.POST.get('index_number', '')
     password = request.POST.get('password', '')
     hashed_password = Student.get_hashed_password(password)
@@ -156,10 +154,9 @@ def login(request):
         else:
             return HttpResponseRedirect('/change_password/')
     except Student.DoesNotExist:
-        context['errors'] = ["Bledny login lub haslo"]
-        template = loader.get_template('login.html')
+        context['errors'] = ["Błedny login lub hasło"]
         context.update(csrf(request))
-        return HttpResponse(template.render(context))
+        return render(request, 'login.html', context)
 
 
 def logout(request):
@@ -168,14 +165,13 @@ def logout(request):
 
 
 def change_password(request):
-    context = RequestContext(request)
-    context['current_student'] = Student.objects.get(id=request.session.get('user', 0))
-    template = loader.get_template('change_password.html')
-    return HttpResponse(template.render(context))
+    context = {'current_student': Student.objects.get(id=request.session.get('user', 0))}
+    return render(request, 'change_password.html', context)
 
 
 def save_password(request):
-    context = RequestContext(request)
+    context = {}
+
     current_student = Student.objects.get(id=request.session.get('user', 0))
     context['current_student'] = current_student
 
@@ -183,27 +179,18 @@ def save_password(request):
     new_password = request.POST.get('new_password', '')
     rep_password = request.POST.get('repeat_password', '')
 
-    hashed_old_password = Student.get_hashed_password(old_password)
+    result = current_student.set_new_password(
+        current_password=old_password, new_password=new_password, rep_password=rep_password
+    )
 
-    if not current_student.password == hashed_old_password:
-        context['errors'] = ["Bledne stare login"]
-    elif not new_password == rep_password:
-        context['errors'] = ["Podane hasla sa rozne"]
-    elif len(new_password) < 6:
-        context['errors'] = ["Nowe haslo jest zbyt krotkie"]
-
-    if 'errors' not in context:
-        current_student.password = Student.get_hashed_password(new_password)
-        current_student.is_activated = True
+    if len(result) == 0:
         current_student.save()
-
         context['success'] = ["Hasło zostało zmienione"]
-        template = loader.get_template('dashboard.html')
-        return HttpResponse(template.render(context))
+        return render(request, 'dashboard.html', context)
     else:
-        template = loader.get_template('change_password.html')
+        context.update({'errors': result})
         context.update(csrf(request))
-        return HttpResponse(template.render(context))
+        return render(request, 'change_password.html', context)
 
 
 def index(request):

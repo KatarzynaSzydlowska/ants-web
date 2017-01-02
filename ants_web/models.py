@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.hashers import make_password
-from django.db import models
-
+from students.models import *
 
 class CourseManager(models.Manager):
     @classmethod
     def create(cls, name):
+        if not len(name):
+            raise ValueError('Nazwa przedmiotu  nie może być pusta')
+
         return Course(name=name)
 
     def get_or_create(self, name):
@@ -20,6 +21,7 @@ class CourseManager(models.Manager):
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=128)
+    students = models.ManyToManyField(Student)
     objects = CourseManager()
 
     def get_instructors(self):
@@ -38,7 +40,10 @@ class Course(models.Model):
         for term in terms:
             points_sum += points.get(term.id, 0)
 
-        return points_sum <= 15
+        return 15 >= points_sum > 0
+
+    def has_joined_course(self, student):
+        return len(self.students.filter(id=student.id)) > 0
 
 
 class InstructorManager(models.Manager):
@@ -50,7 +55,7 @@ class InstructorManager(models.Manager):
         try:
             return self.get(name=name)
         except Instructor.DoesNotExist:
-            return Instructor.objects.create(name=name, email=email)
+            return self.create(name=name, email=email)
 
 
 class Instructor(models.Model):
@@ -98,7 +103,8 @@ class Term(models.Model):
     objects = TermManager()
 
     terms_types = {
-        'Wykład': 1, 'Ćwiczenia Projektowe': 2, 'Lab.': 3, 'Zajęcia Seminaryjne': 4, 'Course': 5, 'Konwersatorium': 6}
+        'Wykład': 1, 'Ćwiczenia Projektowe': 2, 'Lab.': 3, 'Zajęcia Seminaryjne': 4, 'Course': 5,
+        'Konwersatorium': 6}
     terms_names = {1: 'Wykład', 2: 'Ćwiczenia Projektowe', 3: 'Labolatorium', 4: 'Seminarium', 5: 'Kurs',
                    6: 'Konwersatorium'}
     days_of_week = {'M': 1, 'T': 2, 'W': 3, 'Th': 4, 'F': 5}
@@ -113,42 +119,6 @@ class Term(models.Model):
     def get_type_name(self):
         return self.terms_names[self.kind]
 
-
-class StudentManager(models.Manager):
-    @classmethod
-    def create(cls, index, name, surname, group, password):
-        hashed_password = Student.get_hashed_password(password)
-
-        student = Student(
-            index=index,
-            name=name,
-            surname=surname,
-            group_id=group,
-            is_activated=0,
-            password=hashed_password)
-        return student
-
-
-class Student(models.Model):
-    id = models.AutoField(primary_key=True)
-    index = models.IntegerField()
-    password = models.CharField(max_length=32)
-    name = models.CharField(max_length=32)
-    surname = models.CharField(max_length=32)
-    group_id = models.IntegerField()
-    is_activated = models.IntegerField()
-    courses = models.ManyToManyField(Course)
-    objects = StudentManager()
-
-    def __str__(self):
-        return self.name + ' ' + self.surname
-
-    @staticmethod
-    def get_hashed_password(password):
-        return make_password(password, None, hasher='unsalted_md5')
-
-    def has_joined_course(self, course):
-        return len(self.courses.filter(id=course.id))
 
 
 class TermSelectionManager(models.Manager):

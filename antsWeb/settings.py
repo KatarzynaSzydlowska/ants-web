@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ants_web',
+    'students'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -105,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'pl-pl'
+LANGUAGE_CODE = 'pl_PL'
 
 TIME_ZONE = 'UTC'
 
@@ -120,3 +121,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+DEFAULT_CHARSET = 'utf-8'
