@@ -71,6 +71,20 @@ class StudentViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Zalogowany jako ' + self.student.name + ' ' + self.student.surname)
 
+    def test_index_user_not_existing(self):
+        session = self.client.session
+        session['user'] = 0
+        session.save()
+        response = self.client.get(reverse('index'))
+        self.assertRedirects(response, reverse('index'))
+
+    def test_index_user_not_activated(self):
+        session = self.client.session
+        session['user'] = self.student2.id
+        session.save()
+        response = self.client.get(reverse('index'))
+        self.assertRedirects(response, reverse('change_password'))
+
     def test_login_failure(self):
         response = self.client.post(reverse('login'), {'index_number': 122, 'password': 'testpassword0'})
         self.assertContains(response, 'Błędny login lub hasło.')
@@ -82,6 +96,13 @@ class StudentViewsTestCase(TestCase):
     def test_login_success_not_activated(self):
         response = self.client.post(reverse('login'), {'index_number': 122, 'password': 'testpassword'})
         self.assertRedirects(response, reverse('change_password'))
+
+    def test_logout(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+        response = self.client.get(reverse('logout'))
+        self.assertRedirects(response, reverse('index'))
 
     def test_password_change_success(self):
         session = self.client.session
