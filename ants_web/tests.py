@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 
+from ants_web.templatetags.ants_web_tags import has_student_joined_course
 from models import *
 from views import *
 
@@ -373,3 +374,23 @@ class ViewTestCase(TestCase):
         data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
         response = self.client.post(reverse('terms_selection'), data)
         self.assertContains(response, u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.')
+
+
+class TemplateTagsTestCase(TestCase):
+    def setUp(self):
+        self.student = Student.objects.create(index=123, name='Tomasz', surname='Abacki', group_id=3,
+                                              is_activated=True, password='testpass')
+        self.student.save()
+
+        self.student2 = Student.objects.create(index=124, name='Jacek', surname='Abacki', group_id=3,
+                                               is_activated=True, password='testpass')
+        self.student2.save()
+
+        self.course = Course.objects.create('PITE')
+        self.course.save()
+        self.course.students.add(self.student)
+        self.course.save()
+
+    def test_has_student_joined_course(self):
+        self.assertTrue(has_student_joined_course(self.student, self.course))
+        self.assertFalse(has_student_joined_course(self.student2, self.course))
