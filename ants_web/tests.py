@@ -242,11 +242,11 @@ class InstructorManagerTestCase(TestCase):
         self.assertEqual(instructor.id, instructor2.id)
 
     def test_get_or_create_create(self):
-        instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
+        instructor = Instructor.objects.create(name='Tomasz Cabacki', email='tomasz@cabacki.pl')
         instructor.save()
         self.assertIsInstance(instructor, Instructor)
-        self.assertEqual(instructor.name, 'Tomasz Abacki')
-        self.assertEqual(instructor.email, 'tomasz@abacki.pl')
+        self.assertEqual(instructor.name, 'Tomasz Cabacki')
+        self.assertEqual(instructor.email, 'tomasz@cabacki.pl')
 
 
 class LocationManagerTestCase(TestCase):
