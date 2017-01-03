@@ -245,6 +245,8 @@ class InstructorManagerTestCase(TestCase):
         instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
         instructor.save()
         self.assertIsInstance(instructor, Instructor)
+        self.assertEqual(instructor.name, 'Tomasz Abacki')
+        self.assertEqual(instructor.email, 'tomasz@abacki.pl')
 
 
 class LocationManagerTestCase(TestCase):
