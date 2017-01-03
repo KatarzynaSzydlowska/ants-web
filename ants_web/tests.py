@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-#from unittest import TestCase
-from django.contrib.sessions.middleware import SessionMiddleware
-from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 
@@ -12,7 +9,7 @@ from views import *
 class CourseManagerTestCase(TestCase):
     def setUp(self):
         self.course = Course.objects.create('PITE')
-        self.manager = Course.objects
+        self.course.save()
 
     def test_create(self):
         self.assertIsInstance(self.course, Course)
@@ -28,6 +25,15 @@ class CourseManagerTestCase(TestCase):
 
     def test_create_name(self):
         self.assertEqual(self.course.name, 'PITE')
+
+    def test_get_or_create_get(self):
+        course = Course.objects.get_or_create('PITE')
+        self.assertEqual(course.id, self.course.id)
+
+    def test_get_or_create_create(self):
+        course = Course.objects.get_or_create('PITE 2')
+        self.assertIsInstance(course, Course)
+        self.assertNotEqual(course.id, self.course.id)
 
 
 class CourseTestCase(TestCase):
@@ -48,38 +54,32 @@ class CourseTestCase(TestCase):
         self.location = Location(name='D10, 206', capacity=15)
         self.location.save()
 
-        self.termLab = Term(
-            kind=2, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course, day_of_week=1
-        )
+        self.termLab = Term(kind=2, starts_at='11:30', ends_at='13:00', location=self.location,
+                            course=self.course, day_of_week=1)
         self.termLab.save()
 
-        self.term_class = Term(
-            kind=3, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course, day_of_week=1
-        )
+        self.term_class = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                               course=self.course, day_of_week=1)
         self.term_class.save()
         self.term_class.instructors.add(self.instructor1)
 
-        self.term_class_2 = Term(
-            kind=3, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course, day_of_week=1
-        )
+        self.term_class_2 = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                                 course=self.course, day_of_week=1)
         self.term_class_2.save()
         self.term_class_2.instructors.add(self.instructor1)
 
-        self.term_class_3 = Term(
-            kind=3, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course, day_of_week=1
-        )
+        self.term_class_3 = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                                 course=self.course, day_of_week=1)
         self.term_class_3.save()
         self.term_class_3.instructors.add(self.instructor1)
 
-        self.term_lecture = Term(
-            kind=1, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course, day_of_week=1
-        )
+        self.term_lecture = Term(kind=1, starts_at='11:30', ends_at='13:00', location=self.location,
+                                 course=self.course, day_of_week=1)
         self.term_lecture.save()
         self.term_lecture.instructors.add(self.instructor1)
 
-        self.term_class2 = Term(
-            kind=3, starts_at='11:30', ends_at='13:00', location=self.location, course=self.course2, day_of_week=1
-        )
+        self.term_class2 = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                                course=self.course2, day_of_week=1)
         self.term_class2.save()
         self.term_class2.instructors.add(self.instructor3)
 
@@ -117,8 +117,47 @@ class CourseTestCase(TestCase):
         points.update({self.term_class_3.id: 0})
         self.assertFalse(self.course.validate_points(points))
 
+    def test_has_joined_course_positive(self):
+        student = Student.objects.create(index=123, name="Paweł", surname="Ćwięreśniak", group_id=3,
+                                         is_activated=True, password="testpassword")
+        student.save()
+
+        self.course.students.add(student)
+        self.course.save()
+
+        self.assertTrue(self.course.has_joined_course(student))
+
+    def test_has_joined_course_negative(self):
+        student = Student.objects.create(index=124, name="Jacek", surname="Ćwięreśniak", group_id=3,
+                                         is_activated=True, password="testpassword")
+        student.save()
+
+        self.assertFalse(self.course.has_joined_course(student))
+
 
 class TermTestCase(TestCase):
+    def setUp(self):
+        self.course = Course(name='Pite')
+        self.course.save()
+
+        self.location = Location(name='D10, 206', capacity=15)
+        self.location.save()
+
+        self.termLab = Term(kind=2, starts_at='11:30', ends_at='13:00', location=self.location,
+                            course=self.course, day_of_week=1)
+        self.termLab.save()
+
+        self.instructor1 = Instructor(name='Tomasz Abacki', email='tomasz@abacki.pl')
+        self.instructor1.save()
+        self.instructor2 = Instructor(name='Tomasz Babacki', email='tomasz@babacki.pl')
+        self.instructor2.save()
+        self.instructor3 = Instructor(name='Tomasz Cabacki', email='tomasz@cabacki.pl')
+        self.instructor3.save()
+
+        self.termLab.instructors.add(self.instructor1)
+        self.termLab.instructors.add(self.instructor2)
+        self.termLab.save()
+
     def test_get_day_of_week_name_poniedzialek(self):
         term = Term(day_of_week=1)
         self.assertEqual(u'Poniedziałek', term.get_day_of_week_name())
@@ -139,6 +178,86 @@ class TermTestCase(TestCase):
         term = Term(day_of_week=5)
         self.assertEqual(u'Piątek', term.get_day_of_week_name())
 
+    def test_get_instructors(self):
+        instructors = self.course.get_instructors()
+        self.assertIn(self.instructor1, instructors)
+        self.assertIn(self.instructor2, instructors)
+        self.assertNotIn(self.instructor3, instructors)
+        self.assertEqual(len(instructors), 2)
+
+    def test_get_type_name_wyklad(self):
+        term = Term(kind=1)
+        self.assertEqual(u'Wykład', term.get_type_name())
+
+    def test_get_type_name_projekt(self):
+        term = Term(kind=2)
+        self.assertEqual(u'Ćwiczenia Projektowe', term.get_type_name())
+
+    def test_get_type_name_labolatorium(self):
+        term = Term(kind=3)
+        self.assertEqual(u'Labolatorium', term.get_type_name())
+
+    def test_get_type_name_seminarium(self):
+        term = Term(kind=4)
+        self.assertEqual(u'Seminarium', term.get_type_name())
+
+    def test_get_type_name_kurs(self):
+        term = Term(kind=5)
+        self.assertEqual(u'Kurs', term.get_type_name())
+
+
+class TermManagerTestCase(TestCase):
+    def setUp(self):
+        self.course = Course(name='Pite')
+        self.course.save()
+
+        self.location = Location(name="207", capacity=15)
+        self.location.save()
+
+    def test_create(self):
+        term = Term.objects.create(kind=1, starts_at='11:30', ends_at='13:00', course=self.course,
+                                   day_of_week=1, location=self.location)
+        self.assertIsInstance(term, Term)
+
+
+class TermSelectionTestCase(TestCase):
+    def setUp(self):
+        self.course = Course(name='Pite')
+        self.course.save()
+
+        self.location = Location(name='D10, 206', capacity=15)
+        self.location.save()
+
+        self.term = Term(kind=2, starts_at='11:30', ends_at='13:00', location=self.location,
+                         course=self.course, day_of_week=1)
+        self.term.save()
+
+        self.student = Student.objects.create(index=123, name="Paweł", surname="Ćwięreśniak", group_id=3,
+                                              is_activated=True, password="testpassword")
+        self.student.save()
+
+        self.selection = TermSelection.objects.create_or_update(student_id=self.student.id,
+                                                                term_id=self.term.id,
+                                                                points=5, comment='testowy')
+        self.selection.save()
+
+    def test_create_or_update_create(self):
+        self.assertIsInstance(self.selection, TermSelection)
+        self.assertEqual(self.selection.student_id, self.student.id)
+        self.assertEqual(self.selection.term_id, self.term.id)
+        self.assertEqual(self.selection.points, 5)
+        self.assertEqual(self.selection.comment, 'testowy')
+
+    def test_create_or_update_update(self):
+        selection = TermSelection.objects.create_or_update(student_id=self.student.id,
+                                                           term_id=self.term.id,
+                                                           points=6, comment='nie testowy')
+
+        self.assertIsInstance(self.selection, TermSelection)
+        self.assertEqual(self.selection.id, selection.id)
+        self.assertEqual(selection.points, 6)
+        self.assertEqual(selection.comment, 'nie testowy')
+
 
 class ViewTestCase(TestCase):
     def setUp(self):
@@ -150,39 +269,4 @@ class ViewTestCase(TestCase):
         self.student.is_activated = True
         self.student.save()
 
-
-    def test_negative_login(self):
-        request = self.factory.post(reverse('login'), {'index_number': '123', 'password': 'test'})
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        request.session.save()
-        response = login(request)
-        self.assertEqual(response.status_code, 200)
-
-    def test_positive_login(self):
-        request = self.factory.post(reverse('login'), {'index_number': '123', 'password': 'passwordtest'})
-        #middleware = SessionMiddleware()
-        #middleware.process_request(request)
-        #request.session.save()
-        response = login(request)
-        self.assertEqual(response.status_code, 200)
-
-'''
-    #def test_change_password(self):
-    #    #request = self.factory.get('/change_password')
-    #    request = self.factory.post('/change_password', {'user': '', 'password': 'passwordtest'})
-    #    middleware = SessionMiddleware()
-    #    middleware.process_request(request)
-    #    request.session.save()
-    #    response = logout(request)
-    #    response = change_password(request)
-    #    self.assertEqual(response.status_code, 200)
-
-    #PASS
-
-
-
-
-    #)
-'''
 

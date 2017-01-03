@@ -3,11 +3,12 @@ from __future__ import unicode_literals
 
 from students.models import *
 
+
 class CourseManager(models.Manager):
     @classmethod
     def create(cls, name):
         if not len(name):
-            raise ValueError('Nazwa przedmiotu  nie może być pusta')
+            raise ValueError(u'Nazwa przedmiotu nie może być pusta.')
 
         return Course(name=name)
 
