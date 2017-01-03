@@ -46,6 +46,10 @@ class Course(models.Model):
     def has_joined_course(self, student):
         return len(self.students.filter(id=student.id)) > 0
 
+    @staticmethod
+    def get_student_courses(student):
+        return Course.objects.filter(students__course__students=student.id)
+
 
 class InstructorManager(models.Manager):
     @classmethod
@@ -119,7 +123,6 @@ class Term(models.Model):
 
     def get_type_name(self):
         return self.terms_names[self.kind]
-
 
 
 class TermSelectionManager(models.Manager):

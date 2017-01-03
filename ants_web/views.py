@@ -11,7 +11,7 @@ from models import Student, Course, TermSelection
 def terms_selection(request):
     context = {}
     student = Student.objects.get(id=request.session.get('user'))
-    courses = student.courses.all()
+    courses = Course.get_student_courses(student)
 
     if request.method == 'POST':
         points = {}
@@ -29,9 +29,15 @@ def terms_selection(request):
                 elif result.group(2) == 'comment':
                     comments[int(result.group(1))] = request.POST.get(key)
 
-        for course in courses:
-            if not course.validate_points(points):
-                context['errors'] = [u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + course.name + u')']
+        for term_id in points:
+            if points[term_id] > 10:
+                context['errors'] = [u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.']
+
+        if 'errors' not in context:
+            for course in courses:
+                if not course.validate_points(points):
+                    context['errors'] = [
+                        u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + course.name + u')']
 
         if 'errors' not in context:
             for term_id, point in points.items():
@@ -64,16 +70,18 @@ def terms_selection(request):
 
 
 def course_list(request):
+    student = Student.objects.get(id=request.session.get('user'))
     context = {
-        'current_student': Student.objects.get(id=request.session.get('user')),
+        'current_student': student,
         'courses': enumerate(Course.objects.all())
     }
     return render(request, 'course/list.html', context)
 
 
 def course_details(request, course_id):
+    student = Student.objects.get(id=request.session.get('user'))
     context = {
-        'current_student': Student.objects.get(id=request.session.get('user')),
+        'current_student': student,
         'course': Course.objects.get(id=course_id)
     }
     return render(request, 'course/details.html', context)
@@ -103,13 +111,13 @@ def course_leave(request, course_id):
 def course_join(request, course_id):
     student = Student.objects.get(id=request.session.get('user'))
     context = {
-        'courses': enumerate(Course.objects.all()),
+        'courses': enumerate(Course.get_student_courses(student)),
         'current_student': student
     }
 
     if course_id is not 0:
         course = Course.objects.get(id=course_id)
-        student.courses.add(course)
+        course.students.add(student)
 
         try:
             student.save()

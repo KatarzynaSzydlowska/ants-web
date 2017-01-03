@@ -2,3 +2,4 @@
 omit =
     antsWeb/*
     */apps.py
+    manage.py

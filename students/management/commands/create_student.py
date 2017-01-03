@@ -17,7 +17,8 @@ class Command(BaseCommand):
             name=str(options['name']),
             surname=str(options['surname']),
             password=str(options['password']),
-            group=options['group'],
+            group_id=options['group'],
+            is_activated=True
         )
 
         try:

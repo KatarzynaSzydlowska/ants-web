@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 
@@ -228,6 +229,11 @@ class InstructorManagerTestCase(TestCase):
         self.assertEqual(instructor.name, 'Tomasz Abacki')
         self.assertEqual(instructor.email, 'tomasz@abacki.pl')
 
+    def test_create_not_exists(self):
+        instructor = Instructor.objects.create(name='Jonasz Abacki', email='jonasz@abacki.pl')
+        instructor.save()
+        self.assertIsInstance(instructor, Instructor)
+
     def test_get_or_create_get(self):
         instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
         instructor.save()
@@ -305,10 +311,63 @@ class ViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.factory = RequestFactory()
-        self.student = Student(
-            index=123, name="Pawel", surname="Semon", group_id="3", password="testpassword"
-        )
-        self.student.is_activated = True
+        self.student = Student.objects.create(index=123, name="Paweł", surname="Ćwięreśniak", group_id=3,
+                                              is_activated=True, password="testpassword")
         self.student.save()
 
+        self.course = Course(name='PITE')
+        self.course.save()
+        self.course.students.add(self.student)
+        self.course.save()
 
+        self.location = Location(name='D10, 206', capacity=15)
+        self.location.save()
+
+        self.term = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                         course=self.course, day_of_week=1)
+        self.term.save()
+
+        self.term2 = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
+                          course=self.course, day_of_week=2)
+        self.term2.save()
+
+    def test_terms_selection(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        data = {}
+        data.update({'selection[%s][points]' % self.term.id: 10})
+        data.update({'selection[%s][comment]' % self.term.id: ''})
+        data.update({'selection[%s][points]' % self.term2.id: 3})
+        data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
+        response = self.client.post(reverse('terms_selection'), data)
+        self.assertContains(response, 'Twój wybór został zapisany.')
+
+    def test_terms_selection_failure_sum(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        data = {}
+        data.update({'selection[%s][points]' % self.term.id: 10})
+        data.update({'selection[%s][comment]' % self.term.id: ''})
+        data.update({'selection[%s][points]' % self.term2.id: 6})
+        data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
+        response = self.client.post(reverse('terms_selection'), data)
+
+        error = u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + self.term.course.name + u')'
+        self.assertContains(response, error)
+
+    def test_terms_selection_failure_single(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        data = {}
+        data.update({'selection[%s][points]' % self.term.id: 10})
+        data.update({'selection[%s][comment]' % self.term.id: ''})
+        data.update({'selection[%s][points]' % self.term2.id: 16})
+        data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
+        response = self.client.post(reverse('terms_selection'), data)
+        self.assertContains(response, u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.')

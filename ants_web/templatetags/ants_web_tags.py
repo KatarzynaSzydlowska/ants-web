@@ -5,7 +5,7 @@ register = template.Library()
 
 @register.filter(name='has_student_joined_course')
 def has_student_joined_course(student, course):
-    return student.has_joined_course(course)
+    return course.has_joined_course(student)
 
 
 @register.filter(name='get_element')
