@@ -220,6 +220,27 @@ class TermManagerTestCase(TestCase):
         self.assertIsInstance(term, Term)
 
 
+class InstructorManagerTestCase(TestCase):
+    def test_create(self):
+        instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
+        instructor.save()
+        self.assertIsInstance(instructor, Instructor)
+        self.assertEqual(instructor.name, 'Tomasz Abacki')
+        self.assertEqual(instructor.email, 'tomasz@abacki.pl')
+
+    def test_get_or_create_get(self):
+        instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
+        instructor.save()
+        instructor2 = Instructor.objects.get_or_create(name='Tomasz Abacki', email='tomasz@babacki.pl')
+        instructor2.save()
+        self.assertEqual(instructor.id, instructor2.id)
+
+    def test_get_or_create_create(self):
+        instructor = Instructor.objects.create(name='Tomasz Abacki', email='tomasz@abacki.pl')
+        instructor.save()
+        self.assertIsInstance(instructor, Instructor)
+
+
 class LocationManagerTestCase(TestCase):
     def setUp(self):
         self.location = Location.objects.create(name='206', capacity=15)
