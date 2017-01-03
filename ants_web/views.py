@@ -4,7 +4,7 @@ import re
 from django.shortcuts import render
 from django.template.context_processors import csrf
 
-from models import Student, Course, TermSelection
+from models import Student, Course, Term, TermSelection
 
 
 def terms_selection(request):
@@ -29,8 +29,12 @@ def terms_selection(request):
                     comments[int(result.group(1))] = request.POST.get(key)
 
         for term_id in points:
-            if points[term_id] > 10:
-                context['errors'] = [u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.']
+            try:
+                Term.objects.get(id=term_id)
+                if points[term_id] > 10:
+                    context['errors'] = [u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.']
+            except Term.DoesNotExist:
+                context['errors'] = [u'Wybrany termin nie istnieje.']
 
         if 'errors' not in context:
             for course in courses:

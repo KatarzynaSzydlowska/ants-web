@@ -346,6 +346,8 @@ class ViewTestCase(TestCase):
         data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
         response = self.client.post(reverse('terms_selection'), data)
         self.assertContains(response, 'Twój wybór został zapisany.')
+        self.assertEqual(response.context[-1]['points'], {1: 10, 2: 3})
+        self.assertEqual(response.context[-1]['comments'], {1: '', 2: 'nie dam rady'})
 
     def test_terms_selection_failure_sum(self):
         session = self.client.session
@@ -373,7 +375,21 @@ class ViewTestCase(TestCase):
         data.update({'selection[%s][points]' % self.term2.id: 16})
         data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
         response = self.client.post(reverse('terms_selection'), data)
+
         self.assertContains(response, u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.')
+
+    def test_terms_selection_failure_term_not_existing(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        data = {}
+        data.update({'selection[%s][points]' % self.term.id: 10})
+        data.update({'selection[%s][comment]' % self.term.id: ''})
+        data.update({'selection[%s][points]' % 151: 6})
+        data.update({'selection[%s][comment]' % 151: 'nie dam rady'})
+        response = self.client.post(reverse('terms_selection'), data)
+        self.assertContains(response, u'Wybrany termin nie istnieje.')
 
 
 class TemplateTagsTestCase(TestCase):
