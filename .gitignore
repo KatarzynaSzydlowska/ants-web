@@ -1,4 +1,5 @@
 .idea/
 *.pyc
+*/*.pyc
 .coverage
 *.sqlite3
