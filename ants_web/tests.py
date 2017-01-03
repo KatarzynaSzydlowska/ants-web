@@ -391,6 +391,34 @@ class ViewTestCase(TestCase):
         response = self.client.post(reverse('terms_selection'), data)
         self.assertContains(response, u'Wybrany termin nie istnieje.')
 
+    def test_terms_selection_view(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        selection = TermSelection.objects.create_or_update(student_id=self.student.id, term_id=self.term.id,
+                                                           points=10, comment='testowy')
+        selection.save()
+
+        response = self.client.get(reverse('terms_selection'))
+        self.assertContains(response, self.course.name)
+        self.assertContains(response, self.term.get_day_of_week_name())
+        self.assertContains(response, self.term2.get_day_of_week_name())
+        self.assertContains(response, selection.comment)
+        self.assertEqual(response.context[-1]['points'], {selection.id: 10})
+        self.assertEqual(response.context[-1]['comments'], {selection.id: 'testowy'})
+
+    def test_course_list(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        courses = Course.objects.all()
+        response = self.client.get(reverse('course_list'))
+        self.assertEqual(response.context[-1]['current_student'], self.student)
+        for course in courses:
+            self.assertContains(response, course.name)
+
 
 class TemplateTagsTestCase(TestCase):
     def setUp(self):

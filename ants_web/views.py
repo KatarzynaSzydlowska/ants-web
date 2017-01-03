@@ -50,11 +50,8 @@ def terms_selection(request):
                     points=int(points[term_id]),
                     comment=comments.get(term_id, ' ')
                 )
-                try:
-                    selection.save()
-                    context['successes'] = ['Twój wybór został zapisany.']
-                except selection.DoesNotExist:
-                    context['errors'] = ['Wystąpił błąd przy zapisie.']
+                selection.save()
+                context['successes'] = ['Twój wybór został zapisany.']
     else:
         selections = TermSelection.objects.all().filter(student=student)
         points = {}
