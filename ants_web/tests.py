@@ -419,6 +419,21 @@ class ViewTestCase(TestCase):
         for course in courses:
             self.assertContains(response, course.name)
 
+    def test_course_details(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        courses = Course.objects.all()
+        response = self.client.get(reverse('course_details', kwargs={'course_id': self.course.id}))
+        self.assertEqual(response.context[-1]['current_student'], self.student)
+        for course in courses:
+            self.assertContains(response, course.name)
+
+            for term in course.get_terms():
+                self.assertContains(response, term.get_day_of_week_name())
+                self.assertContains(response, '%d:%d' % (term.starts_at.hour, term.starts_at.minute))
+                self.assertContains(response, '%d:%d' % (term.ends_at.hour, term.ends_at.minute))
 
 class TemplateTagsTestCase(TestCase):
     def setUp(self):
