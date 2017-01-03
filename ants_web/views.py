@@ -97,13 +97,10 @@ def course_leave(request, course_id):
 
     if course_id is not 0:
         course = Course.objects.get(id=course_id)
-        student.courses.remove(course)
+        course.students.remove(student)
+        course.save()
 
-        try:
-            student.save()
-            context['successes'] = [u'Przedmiot został usunięty z Twojej listy.']
-        except Student.DoesNotExist:
-            context['errors'] = [u'Wystąpił błąd podczas wypisywania się z przedmiotu.']
+        context['successes'] = [u'Przedmiot został usunięty z Twojej listy.']
 
     return render(request, 'course/list.html', context)
 
@@ -118,11 +115,7 @@ def course_join(request, course_id):
     if course_id is not 0:
         course = Course.objects.get(id=course_id)
         course.students.add(student)
-
-        try:
-            student.save()
-            context['successes'] = [u'Przedmiot został dodany do Twojej listy.']
-        except Student.DoesNotExist:
-            context['errors'] = [u'Wystąpił błąd podczas zapisywania się na przedmiot.']
+        course.save()
+        context['successes'] = [u'Przedmiot został dodany do Twojej listy.']
 
     return render(request, 'course/list.html', context)

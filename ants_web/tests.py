@@ -435,6 +435,28 @@ class ViewTestCase(TestCase):
                 self.assertContains(response, '%d:%d' % (term.starts_at.hour, term.starts_at.minute))
                 self.assertContains(response, '%d:%d' % (term.ends_at.hour, term.ends_at.minute))
 
+    def test_course_leave(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        response = self.client.get(reverse('course_leave', kwargs={'course_id': self.course.id}))
+        self.assertFalse(self.course.has_joined_course(student=self.student))
+        self.assertContains(response, u'Przedmiot został usunięty z Twojej listy.')
+
+    def test_course_join(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        course = Course.objects.create('CPP')
+        course.save()
+
+        response = self.client.get(reverse('course_join', kwargs={'course_id': course.id}))
+        self.assertTrue(course.has_joined_course(student=self.student))
+        self.assertContains(response, u'Przedmiot został dodany do Twojej listy.')
+
+
 class TemplateTagsTestCase(TestCase):
     def setUp(self):
         self.student = Student.objects.create(index=123, name='Tomasz', surname='Abacki', group_id=3,
