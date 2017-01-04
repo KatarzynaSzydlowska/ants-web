@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
-# encoding=utf8
 import csv
-import sys
 
 from django.core.management.base import BaseCommand
 
 from ants_web.models import Term, Course, Instructor, Location
-
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
 
 class Command(BaseCommand):

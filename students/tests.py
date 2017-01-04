@@ -3,6 +3,7 @@ from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
+from django.utils.six import StringIO
 
 from models import *
 from views import *
@@ -132,8 +133,9 @@ class StudentViewsTestCase(TestCase):
 
 class CommandsTestCase(TestCase):
     def test_student_create(self):
-        args = ['102030', u'Paweł', u'Świerk', u'testpassword', '2']
-        call_command('create_student', *args)
+        args = ['102030', 'Paweł', 'Świerk', 'testpassword', '2']
+        out = StringIO()
+        call_command('create_student', *args, stdout=out)
         student = Student.objects.get(index=102030)
         self.assertIsInstance(student, Student)
         self.assertEqual(student.name, u'Paweł')
@@ -146,7 +148,8 @@ class CommandsTestCase(TestCase):
         existing_student = Student.objects.create(index=107, name='Olivier', surname='Wood', group_id=3,
                                                   password='testowe', is_activated=True)
         existing_student.save()
-        call_command('import_students_from_csv', 'test_students.csv')
+        out = StringIO()
+        call_command('import_students_from_csv', 'test_students.csv', stdout=out)
         students = Student.objects.all()
 
         self.assertEqual(len(students), 3)

@@ -1,12 +1,8 @@
 import csv
-import sys
 
 from django.core.management.base import BaseCommand
 
 from ants_web.models import Student
-
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
 
 class Command(BaseCommand):

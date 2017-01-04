@@ -3,6 +3,7 @@ from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
+from django.utils.six import StringIO
 
 from ants_web.templatetags.ants_web_tags import has_student_joined_course
 from models import *
@@ -480,7 +481,8 @@ class TemplateTagsTestCase(TestCase):
 
 class CommandsTestCase(TestCase):
     def test_import_terms_from_csv(self):
-        call_command('import_terms_from_csv', 'test_terms.csv')
+        out = StringIO()
+        call_command('import_terms_from_csv', 'test_terms.csv', stdout=out)
 
         courses = Course.objects.all()
 
