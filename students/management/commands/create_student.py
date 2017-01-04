@@ -12,14 +12,9 @@ class Command(BaseCommand):
         parser.add_argument('group', type=int)
 
     def handle(self, *args, **options):
-        student = Student.objects.create(
-            index=options['index'],
-            name=options['name'],
-            surname=options['surname'],
-            password=options['password'],
-            group_id=options['group'],
-            is_activated=True
-        )
+        student = Student.objects.create(index=options['index'], name=options['name'], surname=options['surname'],
+                                         password=options['password'], group_id=options['group'],
+                                         is_activated=True)
 
         student.save()
         self.stdout.write(self.style.SUCCESS('Student created.'))
