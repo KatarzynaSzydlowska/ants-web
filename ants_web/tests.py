@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
@@ -475,3 +476,26 @@ class TemplateTagsTestCase(TestCase):
     def test_has_student_joined_course(self):
         self.assertTrue(has_student_joined_course(self.student, self.course))
         self.assertFalse(has_student_joined_course(self.student2, self.course))
+
+
+class CommandsTestCase(TestCase):
+    def test_import_terms_from_csv(self):
+        call_command('import_terms_from_csv', 'test_terms.csv')
+
+        courses = Course.objects.all()
+
+        self.assertEqual(len(courses), 2)
+
+        course_a = Course.objects.get(name='Dźwięk i Muzyka W Systemach Komputerowych')
+        self.assertEqual(len(course_a.get_terms()), 2)
+        self.assertEqual(len(course_a.get_choosable_terms()), 1)
+
+        course_b = Course.objects.get(name='Wybrane Aspekty Inżynierii Oprogramowania-Podejście Praktyczne')
+        self.assertEqual(len(course_b.get_terms()), 4)
+        self.assertEqual(len(course_b.get_choosable_terms()), 3)
+
+        term_a = Term.objects.get(course=course_a, kind=3, starts_at='11:20')
+        self.assertIsInstance(term_a, Term)
+
+        with self.assertRaises(Term.DoesNotExist):
+            Term.objects.get(course=course_a, kind=3, starts_at='11:10')
