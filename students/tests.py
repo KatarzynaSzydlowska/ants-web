@@ -132,7 +132,7 @@ class StudentViewsTestCase(TestCase):
 
 class CommandsTestCase(TestCase):
     def test_student_create(self):
-        args = ['102030', 'Paweł', 'Świerk', 'testpassword', '2']
+        args = ['102030', u'Paweł', u'Świerk', u'testpassword', '2']
         call_command('create_student', *args)
         student = Student.objects.get(index=102030)
         self.assertIsInstance(student, Student)

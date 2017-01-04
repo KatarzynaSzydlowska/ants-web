@@ -14,9 +14,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         student = Student.objects.create(
             index=options['index'],
-            name=options['name'].decode('utf-8'),
-            surname=options['surname'].decode('utf-8'),
-            password=options['password'].decode('utf-8'),
+            name=options['name'],
+            surname=options['surname'],
+            password=options['password'],
             group_id=options['group'],
             is_activated=True
         )
