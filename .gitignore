@@ -3,3 +3,5 @@
 */*.pyc
 .coverage
 *.sqlite3
+ants_web/migrations/
+student/migrations/
