@@ -134,7 +134,7 @@ class StudentViewsTestCase(TestCase):
 class CommandsTestCase(TestCase):
     def test_student_create(self):
         out = StringIO()
-        call_command('create_student', '102030', u'Paweł', u'Świerk', 'testpassword', '2', stdout=out)
+        call_command('create_student', '102030', u'Paweł', u'Świerk', u'testpassword', '2', stdout=out)
         student = Student.objects.get(index=102030)
         self.assertIsInstance(student, Student)
         self.assertEqual(student.name, u'Paweł')
