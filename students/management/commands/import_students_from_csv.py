@@ -21,13 +21,15 @@ class Command(BaseCommand):
                     student.surname = row[2]
                     student.password = Student.get_hashed_password(row[2] + row[1])
                     student.group_id = row[3]
+                    student.is_activated = False
                 except Student.DoesNotExist:
                     student = Student.objects.create(
                         index=row[0],
                         name=row[1],
                         surname=row[2],
-                        password=Student.get_hashed_password(row[2] + row[1]),
-                        group=row[3],
+                        password=row[2] + row[1],
+                        group_id=row[3],
+                        is_activated=False
                     )
 
                 student.save()

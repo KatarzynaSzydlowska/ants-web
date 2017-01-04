@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from ants_web.models import Student
 
@@ -21,9 +21,5 @@ class Command(BaseCommand):
             is_activated=True
         )
 
-        try:
-            student.save()
-        except Student.DoesNotExist:
-            raise CommandError('Student was not created')
-
-        self.stdout.write(self.style.SUCCESS('Student created'))
+        student.save()
+        self.stdout.write(self.style.SUCCESS('Student created.'))

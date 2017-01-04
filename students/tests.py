@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
@@ -127,3 +128,42 @@ class StudentViewsTestCase(TestCase):
         )
 
         self.assertContains(response, u'Błędne stare hasło.')
+
+
+class CommandsTestCase(TestCase):
+    def test_student_create(self):
+        args = ['102030', 'Paweł', 'Świerk', 'testpassword', '2']
+        call_command('create_student', *args)
+        student = Student.objects.get(index=102030)
+        self.assertIsInstance(student, Student)
+        self.assertEqual(student.name, u'Paweł')
+        self.assertEqual(student.surname, u'Świerk')
+        self.assertEqual(student.group_id, 2)
+        self.assertEqual(student.password, Student.get_hashed_password('testpassword'))
+        self.assertTrue(student.is_activated)
+
+    def test_import_students_from_csv(self):
+        existing_student = Student.objects.create(index=107, name='Olivier', surname='Wood', group_id=3,
+                                                  password='testowe', is_activated=True)
+        existing_student.save()
+        call_command('import_students_from_csv', 'test_students.csv')
+        students = Student.objects.all()
+
+        self.assertEqual(len(students), 3)
+        student_a = Student.objects.get(index=101)
+        self.assertEqual(student_a.name, u'Harry')
+        self.assertEqual(student_a.surname, u'Potter')
+        self.assertEqual(student_a.password, Student.get_hashed_password('PotterHarry'))
+        self.assertFalse(student_a.is_activated)
+
+        student_b = Student.objects.get(index=102)
+        self.assertEqual(student_b.name, u'Hermione')
+        self.assertEqual(student_b.surname, u'Granger')
+        self.assertEqual(student_b.password, Student.get_hashed_password('GrangerHermione'))
+        self.assertFalse(student_b.is_activated)
+
+        student_c = Student.objects.get(index=107)
+        self.assertEqual(student_c.name, u'Oliver')
+        self.assertEqual(student_c.surname, u'Wood')
+        self.assertEqual(student_c.password, Student.get_hashed_password('WoodOliver'))
+        self.assertFalse(student_c.is_activated)
