@@ -133,7 +133,7 @@ class StudentViewsTestCase(TestCase):
 
 class CommandsTestCase(TestCase):
     def test_student_create(self):
-        args = ['102030', 'Paweł', 'Świerk', 'testpassword', '2']
+        args = ['102030', b'Paweł', b'Świerk', 'testpassword', '2']
         out = StringIO()
         call_command('create_student', *args, stdout=out)
         student = Student.objects.get(index=102030)
