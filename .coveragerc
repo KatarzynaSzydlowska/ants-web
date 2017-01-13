@@ -1,5 +1,10 @@
 [run]
 omit =
-    antsWeb/*
+    antsWeb/settings.py
+    antsWeb/urls.py
+    antsWeb/wsgi.py
+    antsWeb/static/*
+    antsWeb/templates/*
     */apps.py
+    */__init_.py
     manage.py
