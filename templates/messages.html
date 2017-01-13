@@ -17,4 +17,13 @@
             </div>
         </div>
     {% endif %}
+    {% if messages %}
+        <div class="row">
+            <div class="alert alert-info">
+                {% for message in messages %}
+                    {{ message }}<br/>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 </section>

@@ -1,0 +1,48 @@
+{% extends "admin/dashboard.html" %}
+
+{% block title %}Panel administracyjny - Zarządzanie studentami{% endblock %}
+
+{% block tab_content %}
+    <div class="row">
+        <form method="post" enctype="multipart/form-data" class="import-form">
+            {% csrf_token %}
+            <label for="importFile">Importuj z pliku CSV</label>
+            <input type="file" name="importFile" id="importFile"/>
+            <input type="submit" class="btn btn-success" value="Importuj"/>
+        </form>
+        {% if students.count > 0 %}
+            <table class="table table-bordered">
+                <thead>
+                <tr class="tr-header">
+                    <th>Nr indeksu</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Aktywny</th>
+                    <th>Opcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.index }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.surname }}</td>
+                        <td>{% if student.is_activated %}Tak{% else %}Nie{% endif %}</td>
+                        <td>
+                            <a href="{% url 'admin_student_reset' student.id %}">Resetuj hasło</a>
+                            {% if student.is_admin %}
+                                <a href="{% url 'admin_student_demote' student.id %}">Zdegraduj</a>
+                            {% else %}
+                                <a href="{% url 'admin_student_promote' student.id %}">Mianuj administratorem</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>W bazie nie ma jeszcze żadnych studentów.</p>
+        {% endif %}
+    </div>
+{% endblock %}

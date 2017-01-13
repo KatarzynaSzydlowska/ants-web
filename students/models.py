@@ -44,3 +44,6 @@ class Student(models.Model):
         self.password = Student.get_hashed_password(new_password)
         self.is_activated = True
         return []
+
+    def is_admin(self):
+        return self.group_id == 1

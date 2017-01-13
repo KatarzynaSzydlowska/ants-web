@@ -18,7 +18,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'ants_web/static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, '../ants_web/static')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ants_web',
-    'students'
+    'students',
+    'ants_admin'
 ]
 
 MIDDLEWARE_CLASSES = [

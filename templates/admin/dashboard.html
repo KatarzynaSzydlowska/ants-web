@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Panel administracyjny{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Panel administracyjny</h2>
+            <p>Witaj w panelu administracyjnym.</p>
+        </div>
+        <div class="row">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active"><a href="{% url 'admin_students' %}">Studenci</a></li>
+                <li role="presentation"><a href="{% url 'admin_terms' %}">Terminy</a></li>
+                <li role="presentation"><a href="{% url 'admin_settings' %}">Ustawienia</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="container">
+                    {% block tab_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

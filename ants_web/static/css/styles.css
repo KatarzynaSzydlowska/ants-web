@@ -40,3 +40,36 @@ table tbody tr:nth-child(even) {
 .terms_selection td textarea, .terms_selection td input {
     width: 100%;
 }
+
+.nav-tabs li {
+    margin-left: -1px;
+    width: 33.3332%;
+    float: left;
+    padding: 8px;
+    background-color: #8c8c8c;
+    border: 1px solid #2b2d2f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.nav-tabs li.active {
+    background-color: #2b2d2f;
+}
+
+.nav-tabs li a, .nav-tabs li a:visited, .nav-tabs li a:active {
+    color: #080808;
+}
+
+.nav-tabs li.active a, .nav-tabs li.active a:visited, .nav-tabs li.active a:active {
+    color: #e0e0e0;
+}
+
+.nav-tabs li a:hover {
+    color: #222222;
+    text-decoration: none;
+}
+
+.import-form {
+    width: 600px;
+    margin: 10px auto;
+}
