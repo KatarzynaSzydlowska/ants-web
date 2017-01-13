@@ -4,7 +4,7 @@
 
 {% block tab_content %}
     <div class="row">
-        <form method="post" enctype="multipart/form-data" class="import-form">
+        <form action="{% url 'admin_students' %}" method="post" enctype="multipart/form-data" class="import-form">
             {% csrf_token %}
             <label for="importFile">Importuj z pliku CSV</label>
             <input type="file" name="importFile" id="importFile"/>
@@ -37,7 +37,6 @@
                             {% endif %}
                         </td>
                     </tr>
-
                 {% endfor %}
                 </tbody>
             </table>

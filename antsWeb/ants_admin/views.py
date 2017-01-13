@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.template.context_processors import csrf
 from django.utils.six import StringIO
 
+from antsWeb.ants_web.models import Course, Term
 from antsWeb.students.models import Student
 
 
@@ -23,7 +24,7 @@ def admin_students(request):
         return access_denied(request)
 
     students = Student.objects.all()
-    context = {'current_student': current_student, 'students': students}
+    context = {'current_student': current_student, 'students': students, 'active': 'students'}
 
     if request.method == 'POST':
         with default_storage.open('students_import.csv', 'wb+') as destination:
@@ -63,7 +64,54 @@ def admin_terms(request):
     if not check_privileges(current_student):
         return access_denied(request)
 
-    context = {'current_student': current_student}
+    courses = Course.objects.all()
+    context = {'current_student': current_student, 'courses': courses, 'active': 'terms'}
+
+    if request.method == 'POST':
+        with default_storage.open('students_terms.csv', 'wb+') as destination:
+            for chunk in request.FILES['importFile'].chunks():
+                destination.write(chunk)
+
+        out = StringIO()
+        call_command('import_terms_from_csv', 'students_terms.csv', stdout=out, no_color=True)
+        default_storage.delete('students_terms.csv')
+        context.update({'messages': out.getvalue().split("\n")})
+
+    context.update(csrf(request))
+    return render(request, 'admin/terms.html', context)
+
+
+def admin_course_delete(request, course_id):
+    current_student = Student.objects.get(id=request.session.get('user', 0))
+
+    if not check_privileges(current_student):
+        return access_denied(request)
+
+    context = {'current_student': current_student, 'active': 'terms'}
+
+    course = Course.objects.get(id=course_id)
+    course.delete()
+    context.update({'successes': [u'Usunięto przedmiot.']})
+    courses = Course.objects.all()
+    context.update({'courses': courses})
+
+    return render(request, 'admin/terms.html', context)
+
+
+def admin_term_delete(request, term_id):
+    current_student = Student.objects.get(id=request.session.get('user', 0))
+
+    if not check_privileges(current_student):
+        return access_denied(request)
+
+    context = {'current_student': current_student, 'active': 'terms'}
+
+    course = Term.objects.get(id=term_id)
+    course.delete()
+    context.update({'successes': [u'Usunięto termin.']})
+    courses = Course.objects.all()
+    context.update({'courses': courses})
+
     return render(request, 'admin/terms.html', context)
 
 

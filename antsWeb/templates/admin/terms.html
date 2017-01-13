@@ -3,5 +3,50 @@
 {% block title %}Panel administracyjny - Zarządzanie terminami{% endblock %}
 
 {% block tab_content %}
-
+    <div class="row">
+        <form action="{% url 'admin_terms' %}" method="post" enctype="multipart/form-data" class="import-form">
+            {% csrf_token %}
+            <label for="importFile">Importuj z pliku CSV</label>
+            <input type="file" name="importFile" id="importFile"/>
+            <input type="submit" class="btn btn-success" value="Importuj"/>
+        </form>
+        {% if courses.count > 0 %}
+            <table class="table table-bordered">
+                <thead>
+                <tr class="tr-header">
+                    <th colspan="5">Przedmiot</th>
+                    <th>Opcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td colspan="5"><strong>{{ course.name }}</strong></td>
+                        <td>
+                            <a href="{% url 'admin_course_delete' course.id %}">Usuń</a>
+                        </td>
+                    </tr>
+                    {% for term in course.get_terms %}
+                        <tr>
+                            <td></td>
+                            <td>{{ term.get_type_name }}</td>
+                            <td>{{ term.get_day_of_week_name }}</td>
+                            <td>{{ term.starts_at|date:'H:i' }} - {{ term.ends_at|date:'H:i' }}</td>
+                            <td>
+                                {% for instructor in term.get_instructors %}
+                                    {{ instructor.name }}<br/>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'admin_term_delete' term.id %}">Usuń</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>W bazie nie ma jeszcze żadnych terminów.</p>
+        {% endif %}
+    </div>
 {% endblock %}
