@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.template.context_processors import csrf
 from django.utils.six import StringIO
 
-from students.models import Student
+from antsWeb.students.models import Student
 
 
 def check_privileges(student):

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'^', include('ants_web.urls')),
-    url(r'^', include('students.urls')),
-    url(r'^', include('ants_admin.urls'))
+    url(r'^', include('antsWeb.ants_web.urls')),
+    url(r'^', include('antsWeb.students.urls')),
+    url(r'^', include('antsWeb.ants_admin.urls'))
 ]

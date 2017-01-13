@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from students.models import *
+from django.db import models
+
+from antsWeb.students.models import Student
 
 
 class CourseManager(models.Manager):

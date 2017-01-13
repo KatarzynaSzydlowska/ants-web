@@ -3,5 +3,5 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class StudentsConfig(AppConfig):
-    name = 'students'
+class AntsAdminConfig(AppConfig):
+    name = 'antsWeb.ants_admin'

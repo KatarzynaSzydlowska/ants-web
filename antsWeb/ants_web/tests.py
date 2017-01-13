@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.test.client import Client, RequestFactory
 from django.utils.six import StringIO
 
-from ants_web.templatetags.ants_web_tags import has_student_joined_course
+from antsWeb.ants_web.templatetags.ants_web_tags import has_student_joined_course
 from models import *
 from views import *
 

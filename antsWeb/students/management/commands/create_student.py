@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand
 
-from ants_web.models import Student
+from antsWeb.students.models import Student
 
 
 class Command(BaseCommand):

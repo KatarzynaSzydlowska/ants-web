@@ -3,7 +3,7 @@ import csv
 
 from django.core.management.base import BaseCommand
 
-from ants_web.models import Term, Course, Instructor, Location
+from antsWeb.ants_web.models import Term, Course, Instructor, Location
 
 
 class Command(BaseCommand):
