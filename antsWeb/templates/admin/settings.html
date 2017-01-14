@@ -1,7 +1,20 @@
 {% extends "admin/dashboard.html" %}
-
 {% block title %}Panel administracyjny - Ustawienia{% endblock %}
-
+{% load ants_admin_tags %}
 {% block tab_content %}
-
+    <div class="row container">
+        <form method="post" class="col-sm-6 offset-sm-3 settings-form" action="{% url 'admin_settings' %}">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="selectionEnable" class="col-sm-6">Możliwość zapisu</label>
+                <div class="col-sm-6">
+                    <input type="radio" name="selectionEnable" id="selectionEnable" value="1"
+                           {% if "selectionEnable"|get_settings == '1' %}checked{% endif %}/> Tak <br/>
+                    <input type="radio" name="selectionEnable" id="selectionEnable" value="0"
+                           {% if 'selectionEnable'|get_settings == '0' %}checked{% endif %}/> Nie <br/>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success col-sm-2 offset-sm-5" value="Zapisz"/>
+        </form>
+    </div>
 {% endblock %}

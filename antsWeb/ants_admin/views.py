@@ -5,8 +5,9 @@ from django.shortcuts import render
 from django.template.context_processors import csrf
 from django.utils.six import StringIO
 
-from antsWeb.ants_web.models import Course, Term
+from antsWeb.ants_web.models import Course, Term, TermSelection
 from antsWeb.students.models import Student
+from models import ConfigEntry
 
 
 def check_privileges(student):
@@ -121,5 +122,32 @@ def admin_settings(request):
     if not check_privileges(current_student):
         return access_denied(request)
 
-    context = {'current_student': current_student}
+    context = {'current_student': current_student, 'active': 'settings'}
+    context.update(csrf(request))
+
+    if request.method == 'POST':
+        for key in request.POST:
+            if key != 'csrfmiddlewaretoken':
+                ConfigEntry.objects.set(key, request.POST[key])
+
     return render(request, 'admin/settings.html', context)
+
+
+def admin_unavailable_terms(request, selection_id=0):
+    current_student = Student.objects.get(id=request.session.get('user', 0))
+
+    if not check_privileges(current_student):
+        return access_denied(request)
+
+    if selection_id > 0:
+        term_selection = TermSelection.objects.get(id=selection_id)
+        term_selection.points = 1
+        term_selection.save()
+
+    context = {
+        'current_student': current_student,
+        'active': 'unavailable_terms',
+        'selections': TermSelection.objects.all().filter(points=0)
+    }
+
+    return render(request, 'admin/unavailable_terms.html', context)

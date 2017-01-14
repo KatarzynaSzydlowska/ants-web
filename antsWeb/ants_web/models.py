@@ -43,14 +43,14 @@ class Course(models.Model):
         for term in terms:
             points_sum += points.get(term.id, 0)
 
-        return 15 >= points_sum > 0
+        return 15 >= points_sum >= 0
 
     def has_joined_course(self, student):
         return len(self.students.filter(id=student.id)) > 0
 
     @staticmethod
     def get_student_courses(student):
-        return Course.objects.filter(students__course__students=student.id)
+        return Course.objects.all().filter(students__course__students=student.id).distinct()
 
 
 class InstructorManager(models.Manager):

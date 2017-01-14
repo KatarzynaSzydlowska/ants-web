@@ -10,4 +10,4 @@ def has_student_joined_course(student, course):
 
 @register.filter(name='get_element')
 def get_element(dictionary, index):
-    return dictionary.get(index)
+    return dictionary.get(index, '')

@@ -1,0 +1,35 @@
+{% extends "admin/dashboard.html" %}
+
+{% block title %}Panel administracyjny - Niemożliwe terminy{% endblock %}
+
+{% block tab_content %}
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+            <tr class="tr-header">
+                <th>Student</th>
+                <th>Przedmiot</th>
+                <th>Termin</th>
+                <th>Powód</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for selection in selections %}
+                <tr>
+                    <td>{{ selection.student.name }} {{ selection.student.surname }}</td>
+                    <td>{{ selection.term.course.name }}</td>
+                    <td>
+                        {{ selection.term.get_day_of_week_name }}
+                        {{ selection.term.starts_at|date:'H:i' }}-{{ selection.term.ends_at|date:'H:i' }}
+                    </td>
+                    <td>{{ selection.comment }}</td>
+                    <td>
+                        <a href="{% url 'admin_unavailable_terms' selection.id %}">Usuń</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

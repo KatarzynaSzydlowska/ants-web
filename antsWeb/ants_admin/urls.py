@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^admin/course/delete/(?P<course_id>[0-9]+)/$', views.admin_course_delete, name='admin_course_delete'),
     url(r'^admin/term/delete/(?P<term_id>[0-9]+)/$', views.admin_term_delete, name='admin_term_delete'),
     url(r'^admin/terms/$', views.admin_terms, name='admin_terms'),
+    url(r'^admin/unavailable_terms/$', views.admin_unavailable_terms, name='admin_unavailable_terms'),
+    url(r'^admin/unavailable_terms/(?P<selection_id>[0-9]+)/$', views.admin_unavailable_terms,
+        name='admin_unavailable_terms'),
     url(r'^admin/settings/$', views.admin_settings, name='admin_settings'),
 ]

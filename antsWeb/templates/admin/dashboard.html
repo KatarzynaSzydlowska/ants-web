@@ -14,7 +14,9 @@
                         href="{% url 'admin_students' %}">Studenci</a></li>
                 <li role="presentation" {% if active == "terms" %}class="active"{% endif %}><a
                         href="{% url 'admin_terms' %}">Terminy</a></li>
-                <li role="presentation" {% if active == "options" %}class="active"{% endif %}><a
+                <li role="presentation" {% if active == "unavailable_terms" %}class="active"{% endif %}><a
+                        href="{% url 'admin_unavailable_terms' %}">Niemożliwe terminy</a></li>
+                <li role="presentation" {% if active == "settings" %}class="active"{% endif %}><a
                         href="{% url 'admin_settings' %}">Ustawienia</a></li>
             </ul>
             <div class="tab-content">

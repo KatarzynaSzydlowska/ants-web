@@ -4,6 +4,7 @@ import re
 from django.shortcuts import render
 from django.template.context_processors import csrf
 
+from antsWeb.ants_admin.models import ConfigEntry
 from models import Student, Course, Term, TermSelection
 
 
@@ -12,7 +13,7 @@ def terms_selection(request):
     student = Student.objects.get(id=request.session.get('user'))
     courses = Course.get_student_courses(student)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and ConfigEntry.objects.get(name='selectionEnable').value == '1':
         points = {}
         comments = {}
 
@@ -40,7 +41,7 @@ def terms_selection(request):
             for course in courses:
                 if not course.validate_points(points):
                     context['errors'] = [
-                        u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + course.name + u')']
+                        u'Dla każdego przedmiotu możesz przydzielić od 0 do 15 punktów (' + course.name + u')']
 
         if 'errors' not in context:
             for term_id, point in points.items():
@@ -107,10 +108,7 @@ def course_leave(request, course_id):
 
 def course_join(request, course_id):
     student = Student.objects.get(id=request.session.get('user'))
-    context = {
-        'courses': enumerate(Course.get_student_courses(student)),
-        'current_student': student
-    }
+    context = {'current_student': student}
 
     if course_id is not 0:
         course = Course.objects.get(id=course_id)
@@ -118,4 +116,6 @@ def course_join(request, course_id):
         course.save()
         context['successes'] = [u'Przedmiot został dodany do Twojej listy.']
 
+    courses = Course.objects.all()
+    context.update({'courses': enumerate(courses)})
     return render(request, 'course/list.html', context)
