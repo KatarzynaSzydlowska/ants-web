@@ -43,7 +43,7 @@ class Course(models.Model):
         for term in terms:
             points_sum += points.get(term.id, 0)
 
-        return 15 >= points_sum >= 0
+        return 15 >= points_sum > 0
 
     def has_joined_course(self, student):
         return len(self.students.filter(id=student.id)) > 0

@@ -313,6 +313,8 @@ class TermSelectionTestCase(TestCase):
 
 
 class ViewTestCase(TestCase):
+    fixtures = ['antsWeb/ants_admin/fixtures/data.yaml']
+
     def setUp(self):
         self.client = Client()
         self.factory = RequestFactory()
@@ -378,7 +380,7 @@ class ViewTestCase(TestCase):
         data.update({'selection[%s][comment]' % self.term2.id: 'nie dam rady'})
         response = self.client.post(reverse('terms_selection'), data)
 
-        self.assertContains(response, u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.')
+        self.assertContains(response, u'Dla każdego terminu możesz przymisać od 0 do 10 punktów')
 
     def test_terms_selection_failure_term_not_existing(self):
         session = self.client.session

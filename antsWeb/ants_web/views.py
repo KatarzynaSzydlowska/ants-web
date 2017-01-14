@@ -13,7 +13,7 @@ def terms_selection(request):
     student = Student.objects.get(id=request.session.get('user'))
     courses = Course.get_student_courses(student)
 
-    if request.method == 'POST' and ConfigEntry.objects.get(name='selectionEnable').value == '1':
+    if request.method == 'POST' and ConfigEntry.objects.get(name="selectionEnable").value == '1':
         points = {}
         comments = {}
 
@@ -33,7 +33,7 @@ def terms_selection(request):
             try:
                 Term.objects.get(id=term_id)
                 if points[term_id] > 10:
-                    context['errors'] = [u'Dla każdego terminy możesz przymisać od 1 do 10 punktów.']
+                    context['errors'] = [u'Dla każdego terminu możesz przymisać od 0 do 10 punktów.']
             except Term.DoesNotExist:
                 context['errors'] = [u'Wybrany termin nie istnieje.']
 
@@ -41,7 +41,7 @@ def terms_selection(request):
             for course in courses:
                 if not course.validate_points(points):
                     context['errors'] = [
-                        u'Dla każdego przedmiotu możesz przydzielić od 0 do 15 punktów (' + course.name + u')']
+                        u'Dla każdego przedmiotu możesz przydzielić od 1 do 15 punktów (' + course.name + u')']
 
         if 'errors' not in context:
             for term_id, point in points.items():
