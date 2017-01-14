@@ -7,6 +7,7 @@ python:
   - "2.7"
 # command to install dependencies
 install:
+  - pip install pyyaml
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
   - pip install coveralls
