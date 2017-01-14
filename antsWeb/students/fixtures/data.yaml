@@ -1,0 +1,16 @@
+- model: students.student
+  pk: 1
+  fields: {index: 111, password: 275fd9daa0574cd3bca82a26da3cb71e, name: Krzysztof,
+    surname: Szydlowski, group_id: 1, is_activated: 1}
+- model: students.student
+  pk: 2
+  fields: {index: 101, password: c247d51611ae24f637f4733614d01517, name: Harry, surname: Potter,
+    group_id: 1, is_activated: 0}
+- model: students.student
+  pk: 3
+  fields: {index: 102, password: 4dfda3399a4b0d95d5c57dfcf2d16dbd, name: Hermione,
+    surname: Granger, group_id: 1, is_activated: 0}
+- model: students.student
+  pk: 4
+  fields: {index: 103, password: 518eddebb630bae18e6182b6423b84b9, name: Ron, surname: Weasley,
+    group_id: 1, is_activated: 0}

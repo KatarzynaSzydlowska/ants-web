@@ -1,0 +1,100 @@
+- model: ants_web.course
+  pk: 20
+  fields:
+    name: "Wybrane Aspekty In\u017Cynierii Oprogramowania-Podej\u015Bcie Praktyczne"
+    students: [1]
+- model: ants_web.course
+  pk: 21
+  fields:
+    name: "D\u017Awi\u0119k i Muzyka W Systemach Komputerowych"
+    students: [1]
+- model: ants_web.instructor
+  pk: 23
+  fields: {name: "dr in\u017C. Wro\u0144ski, S", email: wronski@novell.ftj.agh.edu.pl}
+- model: ants_web.instructor
+  pk: 24
+  fields: {name: 'Gwiazda, D', email: ''}
+- model: ants_web.location
+  pk: 18
+  fields: {name: D-10 207, capacity: 15}
+- model: ants_web.location
+  pk: 19
+  fields: {name: D-11 18, capacity: 72}
+- model: ants_web.location
+  pk: 20
+  fields: {name: D-10 205, capacity: 15}
+- model: ants_web.location
+  pk: 21
+  fields: {name: D-10 123, capacity: 42}
+- model: ants_web.term
+  pk: 532
+  fields:
+    kind: 3
+    day_of_week: 3
+    starts_at: '11:20:00'
+    ends_at: '12:50:00'
+    course: 21
+    location: 18
+    instructors: [23]
+- model: ants_web.term
+  pk: 533
+  fields:
+    kind: 1
+    day_of_week: 2
+    starts_at: '16:20:00'
+    ends_at: '17:50:00'
+    course: 21
+    location: 19
+    instructors: [23]
+- model: ants_web.term
+  pk: 534
+  fields:
+    kind: 3
+    day_of_week: 5
+    starts_at: '13:00:00'
+    ends_at: '14:30:00'
+    course: 20
+    location: 20
+    instructors: [24]
+- model: ants_web.term
+  pk: 535
+  fields:
+    kind: 3
+    day_of_week: 4
+    starts_at: '13:00:00'
+    ends_at: '14:30:00'
+    course: 20
+    location: 20
+    instructors: [24]
+- model: ants_web.term
+  pk: 536
+  fields:
+    kind: 3
+    day_of_week: 3
+    starts_at: '13:00:00'
+    ends_at: '14:30:00'
+    course: 20
+    location: 20
+    instructors: [24]
+- model: ants_web.term
+  pk: 537
+  fields:
+    kind: 1
+    day_of_week: 5
+    starts_at: 09:40:00
+    ends_at: '11:10:00'
+    course: 20
+    location: 21
+    instructors: [24]
+- model: ants_web.termselection
+  pk: 11
+  fields: {student: 1, term: 536, points: 10, comment: ''}
+- model: ants_web.termselection
+  pk: 12
+  fields: {student: 1, term: 532, points: 5, comment: ''}
+- model: ants_web.termselection
+  pk: 13
+  fields: {student: 1, term: 534, points: 1, comment: "nie mog\u0119"}
+- model: ants_web.termselection
+  pk: 14
+  fields: {student: 1, term: 535, points: 5, comment: ''}
