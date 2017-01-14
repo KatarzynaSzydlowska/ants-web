@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Lista przedmiotów{% endblock %}
+{% load ants_web_tags %}
+
+{% block content %}
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Przedmiot</th>
+            <th>Dzień tygodnia</th>
+            <th>Godzina</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for term in terms %}
+            <tr>
+                <td>{{ term.term.course.name }}</td>
+                <td>{{ term.term.get_day_of_week_name }}</td>
+                <td>{{ term.term.starts_at|date:'H:i' }} {{ term.term.ends_at|date:'H:i' }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

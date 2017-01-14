@@ -8,6 +8,13 @@ from antsWeb.ants_admin.models import ConfigEntry
 from models import Student, Course, Term, TermSelection
 
 
+def terms_selection_results(request):
+    student = Student.objects.get(id=request.session.get('user'))
+    terms = TermSelection.objects.all().filter(student=student, selected=1)
+    context = {'current_student': student, 'terms': terms}
+    return render(request, 'course/terms_selection_results.html', context)
+
+
 def terms_selection(request):
     context = {}
     student = Student.objects.get(id=request.session.get('user'))

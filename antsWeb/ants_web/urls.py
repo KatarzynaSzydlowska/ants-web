@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^course_details/(?P<course_id>[0-9]+)/$', views.course_details, name='course_details'),
     url(r'^course_list/$', views.course_list, name='course_list'),
     url(r'^terms_selection/$', views.terms_selection, name='terms_selection'),
+    url(r'^terms_selection_results/$', views.terms_selection_results, name='terms_selection_results'),
 ]

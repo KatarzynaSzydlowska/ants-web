@@ -148,4 +148,5 @@ class TermSelection(models.Model):
     term = models.ForeignKey(Term, on_delete=models.CASCADE)
     points = models.IntegerField()
     comment = models.CharField(max_length=256)
+    selected = models.IntegerField(null=True)
     objects = TermSelectionManager()
