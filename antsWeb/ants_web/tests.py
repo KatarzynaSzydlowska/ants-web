@@ -491,7 +491,7 @@ class ViewTestCase(TestCase):
         session['user'] = self.student.id
         session.save()
 
-        response = self.client.post(reverse('terms_selection_results', kwargs={'term_id':self.term.id}))
+        response = self.client.post(reverse('terms_selection_group_results', kwargs={'term_id':self.term.id}))
         self.assertContains(response, self.selection.student.name)
         self.assertContains(response, self.selection.student.surname)
         self.assertContains(response, self.selection2.student.name)
