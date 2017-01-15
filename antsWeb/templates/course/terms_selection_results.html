@@ -10,6 +10,7 @@
             <th>Przedmiot</th>
             <th>Dzień tygodnia</th>
             <th>Godzina</th>
+            <td>Pełna lista</td>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +18,10 @@
             <tr>
                 <td>{{ term.term.course.name }}</td>
                 <td>{{ term.term.get_day_of_week_name }}</td>
-                <td>{{ term.term.starts_at|date:'H:i' }} {{ term.term.ends_at|date:'H:i' }}</td>
+                <td>{{ term.term.starts_at|date:'H:i' }}-{{ term.term.ends_at|date:'H:i' }}</td>
+                <td>
+                    <a href="{% url 'terms_selection_group_results' term.term.id %}">Pełna lista</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

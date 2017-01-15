@@ -126,3 +126,11 @@ def course_join(request, course_id):
     courses = Course.objects.all()
     context.update({'courses': enumerate(courses)})
     return render(request, 'course/list.html', context)
+
+
+def terms_selection_group_results(request, term_id):
+    student = Student.objects.get(id=request.session.get('user'))
+    terms = TermSelection.objects.all().filter(term_id=term_id, selected=1)
+    context = {'current_student': student, 'terms': terms}
+
+    return render(request, 'course/group_results.html', context)
