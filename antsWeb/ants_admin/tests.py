@@ -3,8 +3,22 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 
-from antsWeb.ants_web.models import Location
+from antsWeb.ants_web.models import Location, Course
+from antsWeb.students.models import Student
 from views import *
+
+
+class ConfigTestCase(TestCase):
+	def test_set_new(self):
+		entry = ConfigEntry.objects.set('test', 'testvalue')
+		value = ConfigEntry.objects.get(name='test').value
+		self.assertEqual(value, 'testvalue')
+
+	def test_set_new(self):
+		entry = ConfigEntry.objects.set('test', 'testvalue')
+		entry = ConfigEntry.objects.set('test', 'testvalue2')
+		value = ConfigEntry.objects.get(name='test').value
+		self.assertEqual(value, 'testvalue2')
 
 
 class ViewTestCase(TestCase):
@@ -55,6 +69,15 @@ class ViewTestCase(TestCase):
         self.assertContains(response, self.student1.name)
         self.assertContains(response, self.student2.name)
 
+    def test_admin_students_import(self):
+        session = self.client.session
+        session['user'] = self.student1.id
+        session.save()
+        fp = open('test_students.csv')
+        response = self.client.post(reverse('admin_students'), {'importFile': fp})
+        student = Student.objects.get(name="Oliver",surname="Wood")
+        self.assertIsInstance(student, Student)
+
     def test_admin_student_reset(self):
         session = self.client.session
         session['user'] = self.student1.id
@@ -71,6 +94,15 @@ class ViewTestCase(TestCase):
         self.assertContains(response, self.term.starts_at)
         self.assertContains(response, self.term.ends_at)
         self.assertContains(response, self.term.day_of_week)
+
+    def test_admin_terms_import(self):
+        session = self.client.session
+        session['user'] = self.student1.id
+        session.save()
+        fp = open('test_terms.csv')
+        response = self.client.post(reverse('admin_terms'), {'importFile': fp})
+        course = Course.objects.get(name="Dźwięk i Muzyka W Systemach Komputerowych")
+        self.assertIsInstance(course, Course)
 
     def test_course_delete(self):
         session = self.client.session
