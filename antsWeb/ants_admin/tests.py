@@ -34,6 +34,10 @@ class ViewTestCase(TestCase):
                                                is_activated=True, password="testpassword")
         self.student2.save()
 
+        self.student3 = Student.objects.create(index=125, name="Eustachy", surname="Logan", group_id=2,
+                                               is_activated=True, password="testpassword")
+        self.student3.save()
+
         self.course = Course(name='Pite')
         self.course.save()
 
@@ -59,7 +63,19 @@ class ViewTestCase(TestCase):
         session.save()
 
         response = self.client.get(reverse('admin_term_delete', kwargs={'term_id': self.term.id}))
-        self.assertNotContains(response, u'Usunięto termin.')
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_students'))
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_student_reset', kwargs={'student_id': self.student3.id}))
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_terms'))
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_course_delete', kwargs={'course_id': self.course.id}))
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_settings'))
+        self.assertContains(response, u'Brak dostępu')
+        response = self.client.get(reverse('admin_unavailable_terms', kwargs={'selection_id': self.selection.id}))
+        self.assertContains(response, u'Brak dostępu')
 
     def test_admin_students(self):
         session = self.client.session

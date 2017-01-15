@@ -322,6 +322,10 @@ class ViewTestCase(TestCase):
                                               is_activated=True, password="testpassword")
         self.student.save()
 
+        self.student2 = Student.objects.create(index=124, name="Adam", surname="Ćwięreśniak", group_id=3,
+                                              is_activated=True, password="testpassword")
+        self.student2.save()
+
         self.course = Course(name='PITE')
         self.course.save()
         self.course.students.add(self.student)
@@ -337,6 +341,19 @@ class ViewTestCase(TestCase):
         self.term2 = Term(kind=3, starts_at='11:30', ends_at='13:00', location=self.location,
                           course=self.course, day_of_week=2)
         self.term2.save()
+
+        self.selection = TermSelection.objects.create_or_update(student_id=self.student.id,
+                                                                term_id=self.term.id,
+                                                                points=5, comment='testowy')
+        self.selection.selected = 1
+        self.selection.save()
+
+        self.selection2 = TermSelection.objects.create_or_update(student_id=self.student2.id,
+                                                                term_id=self.term.id,
+                                                                points=5, comment='testowy')
+        self.selection2.selected = 1
+        self.selection2.save()
+
 
     def test_terms_selection(self):
         session = self.client.session
@@ -460,6 +477,25 @@ class ViewTestCase(TestCase):
         self.assertTrue(course.has_joined_course(student=self.student))
         self.assertContains(response, u'Przedmiot został dodany do Twojej listy.')
 
+    def test_results(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        response = self.client.post(reverse('terms_selection_results'))
+        self.assertContains(response, self.selection.term.course.name)
+        self.assertContains(response, self.selection.term.get_day_of_week_name())
+
+    def terms_selection_group_results(self):
+        session = self.client.session
+        session['user'] = self.student.id
+        session.save()
+
+        response = self.client.post(reverse('terms_selection_results', kwargs={'term_id':self.term.id}))
+        self.assertContains(response, self.selection.student.name)
+        self.assertContains(response, self.selection.student.surname)
+        self.assertContains(response, self.selection2.student.name)
+        self.assertContains(response, self.selection2.student.surname)
 
 class TemplateTagsTestCase(TestCase):
     def setUp(self):
