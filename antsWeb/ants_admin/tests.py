@@ -14,7 +14,7 @@ class ConfigTestCase(TestCase):
 		value = ConfigEntry.objects.get(name='test').value
 		self.assertEqual(value, 'testvalue')
 
-	def test_set_new(self):
+	def test_set_existing(self):
 		entry = ConfigEntry.objects.set('test', 'testvalue')
 		entry = ConfigEntry.objects.set('test', 'testvalue2')
 		value = ConfigEntry.objects.get(name='test').value
