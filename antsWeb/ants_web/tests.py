@@ -486,7 +486,7 @@ class ViewTestCase(TestCase):
         self.assertContains(response, self.selection.term.course.name)
         self.assertContains(response, self.selection.term.get_day_of_week_name())
 
-    def terms_selection_group_results(self):
+    def test_terms_selection_group_results(self):
         session = self.client.session
         session['user'] = self.student.id
         session.save()
