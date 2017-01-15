@@ -37,7 +37,7 @@ STATICFILES_DIRS = (
 SECRET_KEY = '!bunix$^xpz!47@+lj7bwv949^hji3jqjpjw^&1to7r1jjci2g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
