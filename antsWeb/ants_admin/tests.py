@@ -60,8 +60,7 @@ class ViewTestCase(TestCase):
         session['user'] = self.student1.id
         session.save()
         response = self.client.get(reverse('admin_student_reset', kwargs={'student_id': self.student1.id}))
-        #self.assertFalse(self.student1.is_activated)
-        self.assertContains(response, u'Brak dostępu.')
+        self.assertContains(response, u'Hasło zostało zresetowane')
 
     def test_admin_terms(self):
         session = self.client.session
